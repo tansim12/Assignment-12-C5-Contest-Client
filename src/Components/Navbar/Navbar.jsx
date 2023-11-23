@@ -10,9 +10,10 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import { Link } from "react-router-dom";
 import HomePageNavLink from "./HomePageNavLink";
+
 
 
 const Navbar = () => {
@@ -40,13 +41,13 @@ const Navbar = () => {
       <AppBar position="static" color="primary">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            
             <Typography
               variant="h5"
               noWrap
               component="a"
               sx={{
-                mr: 2,
+                mr: 10,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 800,
@@ -55,7 +56,7 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-              LOGO
+               <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -92,11 +93,12 @@ const Navbar = () => {
                 <HomePageNavLink></HomePageNavLink>
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+            
             <Typography
               variant="h5"
               noWrap
               component="a"
+              src
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -108,7 +110,7 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-              LOGO
+             <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
             </Typography>
             {/* large device  */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
