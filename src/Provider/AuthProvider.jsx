@@ -10,6 +10,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 
 import auth from "../Utils/firebase.config";
+import { globalInstance } from "../Hooks/useGlobalInstance";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -50,21 +51,21 @@ const AuthProvider = ({ children }) => {
   // observer
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // const userEmail = user?.email || currentUser?.email;
+      const userEmail = user?.email || currentUser?.email;
       setUser(currentUser);
       // implement jwt
-      // if (currentUser) {
-      //   axios
-      //     .post(
-      //       "https://assingment-11-c5-server.vercel.app/api/v1/jwt",
-      //       { email: userEmail },
-      //       {
-      //         withCredentials: true,
-      //       }
-      //     )
+      if (currentUser) {
+        globalInstance
+          .post(
+            "/jwt",
+            { email: userEmail },
+            {
+              withCredentials: true,
+            }
+          )
 
-      //     .catch((err) => console.log(err));
-      // }
+          .catch((err) => console.log(err));
+      }
 
       setUserLoading(false);
     });

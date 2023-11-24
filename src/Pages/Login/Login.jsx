@@ -15,12 +15,13 @@ import LoginWith from "./LoginWith";
 import { useForm } from "react-hook-form";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { login } = useAuthContext();
   const navigate = useNavigate();
+  const loc = useLocation()
   const {
     register,
     handleSubmit,
@@ -31,7 +32,8 @@ const Login = () => {
       .then(() => {
         const toastId = toast.loading("Login Successfully Done");
         toast.success("Login Successfully done", { id: toastId });
-        navigate("/");
+        navigate(loc?.state ? loc?.state : "/", { replace: true });
+
       })
       .catch((err) => toast.error(err.message));
   };

@@ -1,16 +1,29 @@
 import { Box, Button, SvgIcon, Typography } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
+import { globalInstance } from "../../Hooks/useGlobalInstance";
+import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginWith = () => {
   const { googleLogin } = useAuthContext();
+  const navigate = useNavigate();
+  const loc = useLocation()
   const handleLogin = () => {
     googleLogin()
-      .then((res) => {
+      .then(async (res) => {
         const role = "user";
         const name = res?.user?.displayName;
         const email = res?.user?.email;
-        const image = res?.user?.photoURl;
-        console.log(role, name, email, image);
+        const image = res?.user?.photoURL;
+        console.log(image);
+        const info = { image, role, name, email };
+        await globalInstance.post("/users", info).then((res) => {
+         
+          if (res.data.message === "success") {
+            toast.success("Register Successfully done");
+            navigate(loc?.state ? loc?.state : "/", { replace: true });
+          }
+        });
       })
       .catch((err) => console.log(err.message));
   };

@@ -18,10 +18,11 @@ import { useForm } from "react-hook-form";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import hostImage from "../../Hooks/hostImage";
 import toast from "react-hot-toast";
+import { globalInstance } from "../../Hooks/useGlobalInstance";
 
 const Register = () => {
   const { register: registerFirebase, newUpdateProfile } = useAuthContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,19 +37,25 @@ const Register = () => {
     const role = "user";
     const name = data?.name;
     const email = data?.email;
-   
-    console.log(image, role, name, email);
+
+    // console.log(image, role, name, email);
+    const info = { image, role, name, email };
     const toastId = toast.loading("Register Successfully Done");
     registerFirebase(email, data?.password)
-    .then(() => {
+      .then(() => {
         newUpdateProfile(name, image)
-          .then(() => {
-            toast.success("Register Successfully done", { id: toastId });
-            navigate("/login")
+          .then(async () => {
+            await globalInstance.post("/users", info).then((res) => {
+              
+              if (res.data.message === "success") {
+                toast.success("Register Successfully done", { id: toastId });
+                navigate("/login");
+              }
+            });
           })
           .catch((err) => toast.error(err.message), { id: toastId });
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => toast.error(err.message, { id: toastId }));
   };
 
   return (
