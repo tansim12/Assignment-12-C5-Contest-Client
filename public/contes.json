@@ -1,0 +1,53 @@
+[
+  {
+    "contest_name": "Sample Contest 1",
+    "total_join": 0,
+    "tag": "Article",
+    "image": "https://i.ibb.co/Dz0Lhdk/photo-1585241936939-be4099591252-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+    "description": "This is a sample contest description for Contest 1.",
+    "price": 500,
+    "from": "2023-11-27T18:00:00.000Z",
+    "to": "2023-11-29T18:00:00.000Z",
+    "status": "approved",
+    "rating": 4.5,
+    "creatorInfo": {
+      "name": "John Doe",
+      "image": "https://i.ibb.co/h2G2RpQ/photo-1537511446984-935f663eb1f4-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+      "email": "johndoe@example.com"
+    }
+  },
+  {
+    "contest_name": "Sample Contest 2",
+    "total_join": 0,
+    "tag": "Business",
+    "image": "https://i.ibb.co/y59jndr/photo-1553877522-43269d4ea984-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces-edg.jpg",
+    "description": "This is a sample contest description for Contest 2.",
+    "price": 750,
+    "from": "2023-12-01T18:00:00.000Z",
+    "to": "2023-12-03T18:00:00.000Z",
+    "status": "approved",
+    "rating": 4.2,
+    "creatorInfo": {
+      "name": "Jane Smith",
+      "image": "https://i.ibb.co/5ryCc31/premium-photo-1689977968861-9c91dbb16049-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-cro.jpg",
+      "email": "janesmith@example.com"
+    }
+  },
+  {
+    "contest_name": "Sample Contest 3",
+    "total_join": 0,
+    "tag": "Gaming",
+    "image": "https://i.ibb.co/tscjFZB/photo-1486572788966-cfd3df1f5b42-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+    "description": "This is a sample contest description for Contest 3.",
+    "price": 1000,
+    "from": "2023-12-05T18:00:00.000Z",
+    "to": "2023-12-07T18:00:00.000Z",
+    "status": "approved",
+    "rating": 4.7,
+    "creatorInfo": {
+      "name": "Alice Johnson",
+      "image": "https://i.ibb.co/ZxgRhVq/photo-1527980965255-d3b416303d12-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+      "email": "alicejohnson@example.com"
+    }
+  }
+]

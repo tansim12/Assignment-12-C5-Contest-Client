@@ -7,7 +7,7 @@ const HomeRoot = () => {
            <div>
             <Navbar></Navbar>
            </div>
-           <div style={{marginTop:"100px"}}>
+           <div style={{marginTop:"80px"}}>
             <Outlet></Outlet>
            </div>
         </div>

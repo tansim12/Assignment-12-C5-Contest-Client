@@ -28,8 +28,8 @@ const HomePageNavLink = () => {
           className={`${isMobile || "ml-20"} z-50`}
         >
           <Tab value="one" label="Home" />
-          <Tab value="two" label="Contact" />
-          <Tab value="three" label="Blog"   component={Link} />
+          <Tab value="two" label=" All Contest" to="/allContest" component={Link} />
+          <Tab value="three" label="Blog" component={Link} />
           {/* <Tab value="three" label="Blog" to="/homeee"  component={Link} /> */}
         </Tabs>
       </Box>
