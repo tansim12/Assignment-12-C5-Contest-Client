@@ -27,10 +27,14 @@ const HomePageNavLink = () => {
           aria-label="secondary tabs example"
           className={`${isMobile || "ml-20"} z-50`}
         >
-          <Tab value="one" label="Home" />
-          <Tab value="two" label=" All Contest" to="/allContest" component={Link} />
-          <Tab value="three" label="Blog" component={Link} />
-          {/* <Tab value="three" label="Blog" to="/homeee"  component={Link} /> */}
+          <Tab value="one" label="Home" to="/ " component={Link} />
+          <Tab
+            value="two"
+            label=" All Contest"
+            to="/allContest "
+            component={Link}
+          />
+          
         </Tabs>
       </Box>
     </div>

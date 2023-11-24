@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import Heading from "../../../shared/Heading";
-import ContestCards from "./ContestCards";
+
+import ContestTab from "./ContestTab";
 
 
 const AllContest = () => {
@@ -15,7 +16,7 @@ const AllContest = () => {
             <div>
                 <Container maxWidth={"xl"}>
 
-                <ContestCards></ContestCards>
+                <ContestTab></ContestTab>
                 </Container>
             </div>
 
