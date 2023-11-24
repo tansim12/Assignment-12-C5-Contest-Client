@@ -2,14 +2,20 @@ import { Box, Button, SvgIcon, Typography } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 
 const LoginWith = () => {
-    const {googleLogin} = useAuthContext()
-    const handleLogin =()=>{
-        googleLogin().then(res=>{
-            
-        }).catch(err=>console.log(err.message))
-    }
+  const { googleLogin } = useAuthContext();
+  const handleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        const role = "user";
+        const name = res?.user?.displayName;
+        const email = res?.user?.email;
+        const image = res?.user?.photoURl;
+        console.log(role, name, email, image);
+      })
+      .catch((err) => console.log(err.message));
+  };
   return (
-    <Box  >
+    <Box>
       <Button variant="outlined" onClick={handleLogin}>
         <SvgIcon fontSize="xl">
           <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
@@ -31,7 +37,14 @@ const LoginWith = () => {
             />
           </g>
         </SvgIcon>
-        <Typography variant="body1" color={"black"} fontWeight={800} sx={{mx:5}}>Google</Typography>
+        <Typography
+          variant="body1"
+          color={"black"}
+          fontWeight={800}
+          sx={{ mx: 5 }}
+        >
+          Google
+        </Typography>
       </Button>
     </Box>
   );

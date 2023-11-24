@@ -10,14 +10,16 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
-import { Link } from "react-router-dom";
+import "./navbar.css";
 import HomePageNavLink from "./HomePageNavLink";
-
-
+import useAuthContext from "../../Hooks/useAuthContext";
+import LogOutAndDashboard from "../LogOutAndDashboard/LogOutAndDashboard";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Navbar = () => {
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
+  const { user } = useAuthContext();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -38,10 +40,9 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" color="primary">
+      <AppBar position="fixed" sx={{  bgcolor:"transparent" , color:"black"}} className="navbarBlur">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            
             <Typography
               variant="h5"
               noWrap
@@ -56,7 +57,7 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-               <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
+              <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -93,7 +94,7 @@ const Navbar = () => {
                 <HomePageNavLink></HomePageNavLink>
               </Menu>
             </Box>
-            
+
             <Typography
               variant="h5"
               noWrap
@@ -110,44 +111,62 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-             <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
+              <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
             </Typography>
             {/* large device  */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <HomePageNavLink></HomePageNavLink>
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </Link>
+            {/* profile section  */}
+
+            {!user ? (
+              <Link to={"/login"}>
+                <Button
+                  variant="outlined"
+                  sx={{ bgcolor: "white" , ":hover":{
+                    bgcolor:"unset"
+                  } }}
+                  color="secondary"
+                >
+                  Login
+                </Button>
+              </Link>
+            ) : (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <Box sx={{display:"flex", flexDirection:"column", p:1 , gap:1}}>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={user?.photoURL}
+                    />
+                  </IconButton>
+                  <Typography variant="body" >{user?.displayName}</Typography>
+                  </Box>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <LogOutAndDashboard></LogOutAndDashboard>
                   </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+                </Menu>
+              </Box>
+            )}
           </Toolbar>
         </Container>
       </AppBar>

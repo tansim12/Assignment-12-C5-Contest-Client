@@ -4,6 +4,7 @@ const theme = createTheme(
   {
     palette: {
       primary: { main: '#1565c0' },
+      redColor:{main:"#d32f2f"}
     },
   },
 );
