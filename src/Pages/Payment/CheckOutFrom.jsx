@@ -84,22 +84,18 @@ const CheckOutFrom = ({ oneContestData }) => {
           // userPaymentDetails save by db
           const info = {
             email: user?.email,
+            participantName: user?.displayName,
             transactionId: result?.paymentIntent?.id,
-           contestId:oneContestData?._id,
+            contestId: oneContestData?._id,
             price: oneContestData?.price.toFixed(2),
-            date: new Date(), // todo : utc formate in moment js
-            
+            creatorEmail: oneContestData?.creatorInfo?.email,
+            registerTime: new Date(), // todo : utc formate in moment js
           };
           const res = await instance.post("/userPaymentDetails", info);
           const fetchData = await res.data;
           console.log(fetchData);
-          if (
-            fetchData?.deleteResult?.deletedCount > 0 &&
-            fetchData?.paymentResult?.insertedId
-          ) {
-            setPaymentId(result?.paymentIntent?.id);
+          setPaymentId(result?.paymentIntent?.id);
             toast.success("Payment Successfully done");
-          }
         }
       })
       .catch((err) => {
@@ -107,8 +103,8 @@ const CheckOutFrom = ({ oneContestData }) => {
         toast.error(err.message);
       });
   };
+  console.log(paymentId);
 
- 
   return (
     <form onSubmit={handleSubmit}>
       <div>
