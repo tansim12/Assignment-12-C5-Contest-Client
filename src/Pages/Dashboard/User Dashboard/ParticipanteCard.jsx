@@ -48,11 +48,11 @@ const ParticipanteCard = ({ item }) => {
                 <span style={{ fontWeight: 700, fontSize: "18px" }}>
                   Start:
                 </span>{" "}
-                {item?.to.slice(0, 10)}
+                {item?.from.slice(0, 10)}
               </Grid>
               <Grid xs={6} justifyContent={"flex"}>
                 <span style={{ fontWeight: 700, fontSize: "18px" }}>End:</span>{" "}
-                {item?.from.slice(0, 10)}
+                {item?.to.slice(0, 10)}
               </Grid>
             </Grid>
           </CardContent>
