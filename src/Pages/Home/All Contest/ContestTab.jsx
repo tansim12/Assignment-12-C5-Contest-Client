@@ -96,7 +96,7 @@ const ContestTab = () => {
               <Grid container justifyContent={"center"} alignItems={"center"}>
               {contestData
                 ?.filter((item) => item?.tag === tag)
-                .map((item, i) => (
+                .map((item) => (
                   // <Typography key={i}>{item?.tag}</Typography>
                   <Grid key={item?._id} xs={12} md={6} lg={4} >
                     <ContestCard item={item}></ContestCard>
