@@ -100,8 +100,7 @@ const ContestTab = () => {
                   // <Typography key={i}>{item?.tag}</Typography>
                   <Grid key={item?._id} xs={12} md={6} lg={4} >
                     <ContestCard item={item}></ContestCard>
-                  </Grid>
-                  
+                  </Grid>            
                 ))}
               </Grid>
             </TabPanel>

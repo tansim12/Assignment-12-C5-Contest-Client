@@ -6,17 +6,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const UserNavLinks = () => {
   return (
     <div>
-      <NavLink to="" exact activeClassName="active-link">
+      <NavLink to="/dashboard/myContest" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
           <ShoppingCartIcon sx={{ mr: 2 }} /> My Contest
         </Button>
       </NavLink>
-      <NavLink to="" exact activeClassName="active-link">
+      <NavLink to="/dashboard/myWining" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
           <MilitaryTechOutlinedIcon sx={{ mr: 2 }} /> My Winning
         </Button>
       </NavLink>
-      <NavLink to="" exact activeClassName="active-link">
+      <NavLink to="/dashboard/profile" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
           <Person2Icon sx={{ mr: 2 }} /> Profile
         </Button>

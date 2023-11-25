@@ -42,7 +42,7 @@ const ContestCard = ({ item }) => {
             component="div"
             sx={{ color: theme.palette.primary.main }}
           >
-            Tags : {item?.total_join}
+            Participate : {item?.total_join}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {item?.description}

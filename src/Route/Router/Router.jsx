@@ -9,6 +9,9 @@ import ContestDetailsDiv from "../../Pages/Home/All Contest/ContestDetailsDiv";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../../Pages/Payment/Payment";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
+import MyContest from "../../Pages/Dashboard/MyContest";
+import Profile from "../../Pages/Dashboard/Profile";
+import MyWining from "../../Pages/Dashboard/MyWining";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +53,21 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    children: [
+      // user section
+      {
+        path: "myContest",
+        element: <MyContest></MyContest>,
+      },
+      {
+        path: "myWining",
+        element: <MyWining></MyWining>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+    ],
   },
 ]);
 export default router;
