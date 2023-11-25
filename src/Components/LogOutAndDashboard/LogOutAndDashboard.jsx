@@ -2,6 +2,7 @@ import { Box, Button, ButtonGroup } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { globalInstance } from "../../Hooks/useGlobalInstance";
+import { Link } from "react-router-dom";
 
 const LogOutAndDashboard = () => {
   const { logOut } = useAuthContext();
@@ -39,8 +40,10 @@ const LogOutAndDashboard = () => {
           aria-label="vertical contained button group"
           variant="text"
         >
-          <Button>Dashboard</Button>,
-          <Button onClick={handleLogout}>Logout</Button>,
+          <Link to={"/dashboard"}>
+            <Button>Dashboard</Button>
+          </Link>
+          ,<Button onClick={handleLogout}>Logout</Button>,
         </ButtonGroup>
       </Box>
     </div>

@@ -8,6 +8,7 @@ import ContestDetailsDiv from "../../Pages/Home/All Contest/ContestDetailsDiv";
 
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../../Pages/Payment/Payment";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -42,5 +43,9 @@ const router = createBrowserRouter([
   },
   { path: "/login", element: <Login></Login> },
   { path: "/register", element: <Register /> },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+  },
 ]);
 export default router;

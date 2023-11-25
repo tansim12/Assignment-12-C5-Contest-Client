@@ -1,15 +1,13 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
-import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 import useAxiosHook from "../../Hooks/useAxiosHook";
+import { globalInstance } from "../../Hooks/useGlobalInstance";
 
 const CheckOutFrom = ({ oneContestData }) => {
   const instance = useAxiosHook();
-
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
@@ -18,7 +16,6 @@ const CheckOutFrom = ({ oneContestData }) => {
   const [paymentId, setPaymentId] = useState("");
   const [paymentIdError, setPaymentIdError] = useState("");
   const { user } = useAuthContext();
-  const navigate = useNavigate();
 
   //   get clint secret by getting backend
   useEffect(() => {
@@ -93,9 +90,21 @@ const CheckOutFrom = ({ oneContestData }) => {
           };
           const res = await instance.post("/userPaymentDetails", info);
           const fetchData = await res.data;
-          console.log(fetchData);
-          setPaymentId(result?.paymentIntent?.id);
-            toast.success("Payment Successfully done");
+          if (fetchData?.success) {
+            let newTotalJoin = oneContestData?.total_join + 1;
+            console.log(newTotalJoin);
+            globalInstance
+              .patch(`/contest/${oneContestData?._id}`, {
+                total_join: newTotalJoin,
+              })
+              .then((response) => {
+             
+                if (response.data) {
+                  setPaymentId(result?.paymentIntent?.id);
+                  toast.success("Payment Successfully done");
+                }
+              });
+          }
         }
       })
       .catch((err) => {
@@ -103,7 +112,7 @@ const CheckOutFrom = ({ oneContestData }) => {
         toast.error(err.message);
       });
   };
-  console.log(paymentId);
+ 
 
   return (
     <form onSubmit={handleSubmit}>
