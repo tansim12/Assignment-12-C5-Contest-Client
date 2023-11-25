@@ -32,4 +32,5 @@ const useAxiosHook = () => {
 
   return instance;
 };
+
 export default useAxiosHook;

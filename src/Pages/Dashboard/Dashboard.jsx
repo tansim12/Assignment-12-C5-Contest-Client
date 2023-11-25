@@ -16,12 +16,14 @@ import CallMadeIcon from '@mui/icons-material/CallMade';
 import UserNavLinks from '../../Components/RoleBaseNavlinks/UserNavLinks';
 import AdminNavLinks from '../../Components/RoleBaseNavlinks/AdminNavLinks';
 import CreatorNavLink from '../../Components/RoleBaseNavlinks/CreatorNavLink';
+import useCurrentRole from '../../Hooks/useCurrentRole';
 const drawerWidth = 240;
 
-function ResponsiveDrawer(props) {
+const ResponsiveDrawer=(props)=> {
   const { window } = props;
+  const {currentRole} = useCurrentRole()
+  console.log(currentRole);
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -33,12 +35,17 @@ function ResponsiveDrawer(props) {
       {/* role base links  */}
       <List>
         
-      <UserNavLinks />
-      <CreatorNavLink />
-    <AdminNavLinks/>
+       
+      {currentRole?.currentRole=== "user" && <UserNavLinks />}
+      {currentRole?.currentRole=== "creator" && <CreatorNavLink />}
+      {currentRole?.currentRole=== "admin" && <AdminNavLinks/>}
+      
+    
     
       </List>
-      <Divider />
+      <Divider sx={{border:2 , borderColor:"gray"}}>
+      
+  </Divider>
 
       {/* main links  */}
       <List>
