@@ -1,22 +1,21 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import { Button } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import AddHomeIcon from '@mui/icons-material/AddHome';
+import CallMadeIcon from '@mui/icons-material/CallMade';
+import UserNavLinks from '../../Components/RoleBaseNavlinks/UserNavLinks';
+import AdminNavLinks from '../../Components/RoleBaseNavlinks/AdminNavLinks';
+import CreatorNavLink from '../../Components/RoleBaseNavlinks/CreatorNavLink';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -31,30 +30,29 @@ function ResponsiveDrawer(props) {
     <div>
       <Toolbar />
       <Divider />
+      {/* role base links  */}
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        
+      <UserNavLinks />
+      <CreatorNavLink />
+    <AdminNavLinks/>
+    
       </List>
       <Divider />
+
+      {/* main links  */}
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+      <NavLink to="/" exact activeClassName="active-link">
+      <Button variant='outlined' sx={{my:3}} fullWidth>
+       <AddHomeIcon sx={{mr:2}}/> Home
+      </Button>
+    </NavLink>
+      <NavLink to="/allContest" exact activeClassName="active-link">
+      <Button variant='outlined'  fullWidth>
+       <CallMadeIcon sx={{mr:2}}/> All Contest
+      </Button>
+    </NavLink>
+        
       </List>
     </div>
   );
@@ -83,7 +81,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <img src="https://egamlio.vercel.app/images/logo.png" alt="" />
           </Typography>
         </Toolbar>
       </AppBar>
@@ -156,13 +154,6 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window: PropTypes.func,
-};
 
 export default ResponsiveDrawer;
 
