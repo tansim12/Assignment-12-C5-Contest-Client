@@ -5,6 +5,7 @@ import { Typography, Button, Grid } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 import useCurrentRole from "../../Hooks/useCurrentRole";
 import ProfilePieChart from "./User Dashboard/ProfilePieChart";
+import UpdateProfile from "./User Dashboard/UpdateProfile";
 
 const Profile = () => {
   const { user } = useAuthContext();
@@ -54,7 +55,7 @@ const Profile = () => {
           />
           <div>
             <Grid container spacing={2} my={5} m={2}>
-              <Grid xs={12} lg={6}>
+              <Grid item xs={12} md={6} lg={4}>
                 <Typography>
                   <span style={{ fontWeight: "bold" }}>Name:</span>{" "}
                   {user?.displayName}
@@ -67,11 +68,17 @@ const Profile = () => {
                   <span style={{ fontWeight: "bold" }}>Role:</span>{" "}
                   {currentRole?.currentRole}
                 </Typography>
-                <Button variant="outlined" color="primary" sx={{ my: 1 }}>
-                  Update Profile
-                </Button>
               </Grid>
-              <Grid xs={12} lg={6}>
+              <Grid item xs={12} md={12} lg={6}>
+                <UpdateProfile></UpdateProfile>
+              </Grid>
+            </Grid>
+            <Grid xs={6} md={6}>
+              <Grid
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
                 <ProfilePieChart></ProfilePieChart>
               </Grid>
             </Grid>
