@@ -12,9 +12,9 @@ const useContests = () => {
     },
   });
 
-  const allTags = contestData?.map((item) => item?.tag);
 
-  return { contestData, contestRefetch, allTags };
+
+  return { contestData, contestRefetch };
 };
 
 export default useContests;

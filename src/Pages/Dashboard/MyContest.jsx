@@ -3,7 +3,15 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import ParticipanteCard from "./User Dashboard/ParticipanteCard";
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import useAxiosHook from "../../Hooks/useAxiosHook";
 import useAuthContext from "../../Hooks/useAuthContext";
@@ -14,54 +22,53 @@ const MyContest = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [size, setSize] = React.useState(3);
 
-
-  const [upcoming, setUpcoming] = React.useState('desc');
+  const [upcoming, setUpcoming] = React.useState("desc");
   const handleChange = (event) => {
     setUpcoming(event.target.value);
   };
 
   const instance = useAxiosHook();
   const { user } = useAuthContext();
-  const { data: myContestData = [] } = useQuery({
-    queryKey: ["myContest", user?.email, currentPage , upcoming],
+  const { data = {} } = useQuery({
+    queryKey: ["myContest", user?.email, currentPage, upcoming],
     enabled: !!user?.email,
     queryFn: async () => {
       const res = await instance.get(
-        `/myContest/${user?.email}?page=${currentPage}&size=${size}&sortField=${"from"}&sortValue=${upcoming}`
+        `/myContest/${
+          user?.email
+        }?page=${currentPage}&size=${size}&sortField=${"from"}&sortValue=${upcoming}`
       );
       const fetchData = await res.data;
       return fetchData;
     },
   });
+  const { result: myContestData, totalParticipateContest } = data;
 
-  const counts = Math.ceil(myContestData?.length / size);
+  const counts = Math.ceil(totalParticipateContest / size);
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage); // Update current page number
   };
-  console.log(upcoming);
+
   return (
     <div>
       {/* sorting  */}
       <div>
         <Grid display={"flex"} justifyContent={"end"} mt={5} mb={4}>
-         
-        <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Filter</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={upcoming}
-          label="Filter"
-          onChange={handleChange}
-        >
-          <MenuItem value={"asc"}>UpComing</MenuItem>
-          <MenuItem value={"desc"}>Old Contest</MenuItem>
-         
-        </Select>
-      </FormControl>
-    </Box>  
-            
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={upcoming}
+                label="Filter"
+                onChange={handleChange}
+              >
+                <MenuItem value={"asc"}>UpComing</MenuItem>
+                <MenuItem value={"desc"}>Old Contest</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </Grid>
       </div>
       {/* cart section  */}

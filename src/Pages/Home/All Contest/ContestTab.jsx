@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import useContests from "../../../Hooks/useContests";
 import ContestCard from "./ContestCard";
+// import useAllContestTag from "../../../Hooks/useAllContestTag";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -23,7 +24,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ my:5 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -45,7 +46,13 @@ function a11yProps(index) {
 }
 
 const ContestTab = () => {
-  const { allTags = [], contestData } = useContests();
+  const { contestData } = useContests();
+  // const { data = [] } = useAllContestTag();
+  // const allTags = data[0]?.allContestTag;
+  // console.log(allTags);
+
+  const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
+
   const [currentTags, setCurrentTags] = React.useState(allTags[0]);
   const [newContestData, setNewContestData] = React.useState([]);
 
@@ -93,15 +100,21 @@ const ContestTab = () => {
         >
           {allTags?.map((tag, i) => (
             <TabPanel key={tag} value={value} index={i}>
-              <Grid container justifyContent={"center"} alignItems={"center"}>
-              {contestData
-                ?.filter((item) => item?.tag === tag)
-                .map((item) => (
-                  // <Typography key={i}>{item?.tag}</Typography>
-                  <Grid key={item?._id} xs={12} md={6} lg={4} >
-                    <ContestCard item={item}></ContestCard>
-                  </Grid>            
-                ))}
+              <Grid
+                container
+                justifyContent={"center"}
+                alignItems={"center"}
+                sx={{ p: 0 }}
+                gap={3}
+              >
+                {contestData
+                  ?.filter((item) => item?.tag === tag)
+                  .map((item) => (
+                    // <Typography key={i}>{item?.tag}</Typography>
+                    <Grid key={item?._id} item xs={12} md={4} lg={3}>
+                      <ContestCard item={item}></ContestCard>
+                    </Grid>
+                  ))}
               </Grid>
             </TabPanel>
           ))}

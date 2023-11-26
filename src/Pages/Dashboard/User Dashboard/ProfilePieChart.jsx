@@ -7,17 +7,23 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import useWinnerContestDataByFindUser from "../../../Hooks/useWinnerContestDataByFindUser";
+import useTotalParticipantCount from "../../../Hooks/useTotalParticipantCount";
 
 // todo get data  total win and total register and validation one can not more same contest
 const ProfilePieChart = () => {
+
+  const {winnerData}  = useWinnerContestDataByFindUser()
+  const {totalParticipant}= useTotalParticipantCount()
+  console.log(winnerData.winnerCount , totalParticipant.totalCount);
+
   const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
+    { name: "Winning", value: totalParticipant.totalCount },
+    { name: "Participant", value: winnerData.winnerCount },
+    
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = [ "#FF8042","#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({

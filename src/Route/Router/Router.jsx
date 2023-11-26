@@ -12,11 +12,13 @@ import Dashboard from "../../Pages/Dashboard/Dashboard";
 import MyContest from "../../Pages/Dashboard/MyContest";
 import Profile from "../../Pages/Dashboard/Profile";
 import MyWining from "../../Pages/Dashboard/MyWining";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeRoot></HomeRoot>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         index: true,

@@ -8,9 +8,12 @@ import hostImage from "../../../Hooks/hostImage";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
+import useAxiosHook from "../../../Hooks/useAxiosHook";
 
+// todo use collection update name and image
 const UpdateProfile = () => {
-  const { newUpdateProfile } = useAuthContext();
+  const { newUpdateProfile, user } = useAuthContext();
+  const instance = useAxiosHook();
   const {
     register,
     handleSubmit,
@@ -34,12 +37,21 @@ const UpdateProfile = () => {
       confirmButtonText: "Yes, Update it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await newUpdateProfile(name, image).then(() => {
-          Swal.fire({
-            title: "Update!",
-            text: "Your file has been Update.",
-            icon: "success",
-          });
+        await newUpdateProfile(name, image).then(async () => {
+          await instance
+            .patch(`/users/${user?.email}`, {
+              name,
+              image,
+            })
+            .then((response) => {
+              if (response.data.success) {
+                Swal.fire({
+                  title: "Update!",
+                  text: "Your file has been Update.",
+                  icon: "success",
+                });
+              }
+            });
         });
       }
     });

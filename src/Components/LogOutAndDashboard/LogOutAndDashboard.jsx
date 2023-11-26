@@ -3,9 +3,11 @@ import useAuthContext from "../../Hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { globalInstance } from "../../Hooks/useGlobalInstance";
 import { Link } from "react-router-dom";
+import useCurrentRole from "../../Hooks/useCurrentRole";
 
 const LogOutAndDashboard = () => {
   const { logOut } = useAuthContext();
+  const { currentRole } = useCurrentRole();
   const handleLogout = () => {
     logOut().then(async () => {
       try {
@@ -40,9 +42,24 @@ const LogOutAndDashboard = () => {
           aria-label="vertical contained button group"
           variant="text"
         >
-          <Link to={"/dashboard"}>
-            <Button>Dashboard</Button>
-          </Link>
+          {currentRole?.currentRole === "user" && (
+            <Link to={"/dashboard/myContest"}>
+              <Button>Dashboard</Button>
+            </Link>
+          )}
+
+{/* todo dynamic condition creator route and admin route  */}
+
+          {/* {currentRole?.currentRole === "creator" && (
+            <Link to={"/dashboard/myContest"}>
+              <Button>Dashboard</Button>
+            </Link>
+          )}
+          {currentRole?.currentRole === "admin" && (
+            <Link to={"/dashboard/myContest"}>
+              <Button>Dashboard</Button>
+            </Link>
+          )} */}
           ,<Button onClick={handleLogout}>Logout</Button>,
         </ButtonGroup>
       </Box>
