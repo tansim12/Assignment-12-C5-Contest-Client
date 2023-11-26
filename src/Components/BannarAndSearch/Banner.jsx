@@ -20,7 +20,7 @@ const Banner = () => {
       description:
         "Enjoy a wide range of gourmet dishes prepared by our top chefs. From steaks to seafood, we have it all.",
       image:
-        "https://i.ibb.co/K5gwRVy/photo-1600891964599-f61ba0e24092-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg", // Replace with the actual image URL
+        "https://i.ibb.co/FhkBg0s/pngtree-color-creative-silhouette-knowledge-contest-poster-background-material-picture-image-1011376.png", // Replace with the actual image URL
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Banner = () => {
       description:
         "Experience the taste of Paris in every bite. Our croissants, pastries, and coffee will transport you to France.",
       image:
-        "https://i.ibb.co/2KTcGWt/photo-1576866206930-9c7e5fe27e3e-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg", // Replace with the actual image URL
+        "https://i.ibb.co/2Y9fg66/pngtree-geometric-gradient-silhouette-english-speech-contest-poster-background-material-picture-imag.png", // Replace with the actual image URL
     },
     {
       id: 3,
@@ -36,24 +36,9 @@ const Banner = () => {
       description:
         "Savor the art of sushi making at its finest. Fresh fish, expertly prepared, for a delightful dining experience.",
       image:
-        "https://i.ibb.co/6bJStp2/photo-1576867757603-05b134ebc379-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg", // Replace with the actual image URL
+        "https://i.ibb.co/0K1KhzZ/pngtree-vs-pop-art-background-with-light-effect-picture-image-1208990.png", // Replace with the actual image URL
     },
-    {
-      id: 4,
-      title: "Spice Haven",
-      description:
-        "Get ready for a flavorful adventure. Our menu offers a variety of spicy dishes from around the world.",
-      image:
-        "https://i.ibb.co/k6NmbhV/photo-1504674900247-0877df9cc836-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg", // Replace with the actual image URL
-    },
-    {
-      id: 5,
-      title: "Mediterranean Delights",
-      description:
-        "Indulge in the flavors of the Mediterranean. Our dishes are a blend of fresh ingredients and rich traditions.",
-      image:
-        "https://i.ibb.co/frZyCqv/photo-1499028344343-cd173ffc68a9-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg ", // Replace with the actual image URL
-    },
+    
   ];
 
   return (

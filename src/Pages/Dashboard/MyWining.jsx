@@ -5,7 +5,6 @@ import {
   Avatar,
   Card,
   CardContent,
-  useMediaQuery,
   useTheme,
   Grid,
   Button,
@@ -16,10 +15,16 @@ const MyWining = () => {
   const theme = useTheme();
 
   const { winnerData } = useWinnerContestDataByFindUser();
-  console.log(winnerData);
+
   return (
     <Grid>
-      <Heading />
+      <Heading
+        title={"Celebrate Your Victory!"}
+        additionalInfo={
+          "Join us to celebrate your success in the contest. Get ready for a fun-filled event."
+        }
+        subtitle={"Embrace Your Triumph: A Night of Victory!"}
+      />
       <Grid container spacing={2}>
         {winnerData?.result?.map((contest, index) => (
           <Grid
@@ -29,9 +34,10 @@ const MyWining = () => {
             item
             key={index}
             sx={{ marginBottom: 20 }}
+            
           >
-            <Card>
-              <CardContent>
+            <Card elevation={6}>
+              <CardContent >
                 <Typography variant="h5" gutterBottom>
                   {contest.contest_name}
                 </Typography>
@@ -42,13 +48,8 @@ const MyWining = () => {
                 >
                   Price: ${contest.price}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  gutterBottom
-                  
-                >
-                  <strong>Description:</strong>{" "}
-                  {contest.description}
+                <Typography variant="body2" gutterBottom>
+                  <strong>Description:</strong> {contest.description}
                 </Typography>
                 <Box
                   sx={{ display: "flex", alignItems: "center", marginTop: 2 }}
@@ -56,10 +57,13 @@ const MyWining = () => {
                   <Avatar
                     src={contest.winner.image}
                     alt={contest.winner.name}
-                    sx={{ marginRight: 2 , border:"2px solid gray" }}
+                    sx={{ marginRight: 2, border: "2px solid gray" }}
                   />
                   <Typography variant="subtitle2">
-                   <Button variant="contained" color="warning"> Winning by {contest.winner.name}</Button>
+                    <Button variant="contained" color="warning">
+                      {" "}
+                      Winning by {contest.winner.name}
+                    </Button>
                   </Typography>
                 </Box>
                 <Typography

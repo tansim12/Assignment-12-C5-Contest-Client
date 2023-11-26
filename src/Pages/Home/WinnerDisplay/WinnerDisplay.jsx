@@ -10,14 +10,14 @@ import useWinnerAndChartData from "../../../Hooks/useWinnerAndChartData";
 
 // todo initial  data insert  
 const data2 =  [
-    { css: 'https://images.pexels.com/photos/416430/pexels-photo-416430.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/358574/pexels-photo-358574.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/96381/pexels-photo-96381.jpeg', height: 280 },
-    { css: 'https://images.pexels.com/photos/1005644/pexels-photo-1005644.jpeg', height:280 },
-    { css: 'https://images.pexels.com/photos/1005644/pexels-photo-1005644.jpeg', height:280 }
+    { css: 'https://i.ibb.co/xhwDWMS/photo-1535713875002-d1d0cf377fde-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg', height: 280 },
+    { css: 'https://i.ibb.co/2MFns80/photo-1568602471122-7832951cc4c5-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg', height: 280 },
+    { css: 'https://i.ibb.co/Jp2kJB1/premium-photo-1689568126014-06fea9d5d341-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-cro.jpg', height: 280 },
+    { css: 'https://i.ibb.co/n3K6sLs/photo-1485988865867-f2549dfe1dc7-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg', height: 280 },
+    { css: 'https://i.ibb.co/xz9bwss/photo-1607746882042-944635dfe10e-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg', height: 280 },
+    { css: 'https://i.ibb.co/72xPwnB/premium-photo-1688739352540-a75b102d8551-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-cro.jpg', height: 280 },
+    { css: 'https://i.ibb.co/5L3S9wR/photo-1474176857210-7287d38d27c6-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg', height:280 },
+    { css: 'https://i.ibb.co/qMqKpwH/premium-photo-1688350808212-4e6908a03925-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-cro.jpg', height:280 }
   ]
 
 
