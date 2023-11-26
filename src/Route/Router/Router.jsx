@@ -13,6 +13,7 @@ import MyContest from "../../Pages/Dashboard/MyContest";
 import Profile from "../../Pages/Dashboard/Profile";
 import MyWining from "../../Pages/Dashboard/MyWining";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import AddContest from "../../Pages/Dashboard/Creator Dashboard/AddContest";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "addContest",
+        element: <AddContest></AddContest>,
       },
     ],
   },

@@ -6,7 +6,7 @@ const CreatorNavLink = () => {
     return (
         <div>
             <div>
-      <NavLink to="" exact activeClassName="active-link">
+      <NavLink to="/dashboard/addContest" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
           <AddCircleOutlineOutlinedIcon sx={{ mr: 2 }} /> Add Contest
         </Button>

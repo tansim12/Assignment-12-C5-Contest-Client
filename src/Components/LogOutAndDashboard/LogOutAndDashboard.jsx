@@ -50,12 +50,12 @@ const LogOutAndDashboard = () => {
 
 {/* todo dynamic condition creator route and admin route  */}
 
-          {/* {currentRole?.currentRole === "creator" && (
-            <Link to={"/dashboard/myContest"}>
+          {currentRole?.currentRole === "creator" && (
+            <Link to={"/dashboard/addContest"}>
               <Button>Dashboard</Button>
             </Link>
           )}
-          {currentRole?.currentRole === "admin" && (
+          {/* {currentRole?.currentRole === "admin" && (
             <Link to={"/dashboard/myContest"}>
               <Button>Dashboard</Button>
             </Link>
