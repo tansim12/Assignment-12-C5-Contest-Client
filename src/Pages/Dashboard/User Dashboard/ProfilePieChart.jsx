@@ -15,11 +15,11 @@ const ProfilePieChart = () => {
 
   const {winnerData}  = useWinnerContestDataByFindUser()
   const {totalParticipant}= useTotalParticipantCount()
-  console.log(winnerData.winnerCount , totalParticipant.totalCount);
+
 
   const data = [
-    { name: "Winning", value: totalParticipant.totalCount },
-    { name: "Participant", value: winnerData.winnerCount },
+    { name: "Winning", value: totalParticipant?.totalCount },
+    { name: "Participant", value: winnerData?.winnerCount },
     
   ];
 

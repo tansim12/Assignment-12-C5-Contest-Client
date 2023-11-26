@@ -1,25 +1,36 @@
-import {  Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import BannarAndSearch from "../../Components/BannarAndSearch/Banner";
 import Search from "../../Components/Search/Search";
+import WinnerDisplay from "./WinnerDisplay/WinnerDisplay";
 
 const Home = () => {
   return (
     <div>
       {/* banner and search  */}
-      <div style={{height:"100vh"}}>
-        <Grid container spacing={4} >
-          <Grid item xs={12} md={4} lg={3}  >
-          <Search></Search>
+
+      <Grid>
+        <Grid container spacing={2}>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            lg={4}
+            justifyContent={"center"}
+            display={"flex"}
+          >
+            <Search></Search>
           </Grid>
-          <Grid item xs={12} md={8} lg={9}>
-          <BannarAndSearch></BannarAndSearch>
+          <Grid item xs={12} md={7} lg={7}>
+            <BannarAndSearch></BannarAndSearch>
           </Grid>
         </Grid>
-      </div>
+      </Grid>
 
-      
-      <div >
+      <Grid sx={{ height: "100vh" }}></Grid>
 
+      {/* gallary  */}
+      <div>
+        <WinnerDisplay></WinnerDisplay>
       </div>
     </div>
   );

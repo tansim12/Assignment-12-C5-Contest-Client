@@ -40,7 +40,11 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="fixed" sx={{  bgcolor:"transparent" , color:"black"}} className="navbarBlur">
+      <AppBar
+        position="fixed"
+        sx={{ bgcolor: "transparent", color: "black" }}
+        className="navbarBlur"
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -124,9 +128,12 @@ const Navbar = () => {
               <Link to={"/login"}>
                 <Button
                   variant="outlined"
-                  sx={{ bgcolor: "white" , ":hover":{
-                    bgcolor:"unset"
-                  } }}
+                  sx={{
+                    bgcolor: "white",
+                    ":hover": {
+                      bgcolor: "unset",
+                    },
+                  }}
                   color="secondary"
                 >
                   Login
@@ -135,14 +142,20 @@ const Navbar = () => {
             ) : (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                  <Box sx={{display:"flex", flexDirection:"column", p:1 , gap:1}}>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={user?.photoURL}
-                    />
-                  </IconButton>
-                  <Typography variant="body" >{user?.displayName}</Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      p: 1,
+                      gap: 1,
+                    }}
+                  >
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar alt="Remy Sharp" src={user?.photoURL} />
+                    </IconButton>
+                    <Typography variant="body">
+                      {user?.displayName.slice(0, 8)}
+                    </Typography>
                   </Box>
                 </Tooltip>
                 <Menu
