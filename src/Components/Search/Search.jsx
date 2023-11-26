@@ -2,7 +2,7 @@ import { useTheme } from "@emotion/react";
 import { Grid, TextField, Typography, Button, useMediaQuery } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-const Search = () => {
+const Search = ({setSearchValue}) => {
   const theme = useTheme();
   const matches = useMediaQuery("(max-width:900px)");
   const {
@@ -11,8 +11,8 @@ const Search = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    // Handle form submission here
     const search = data?.search 
+    setSearchValue(search)
     console.log(search);
   };
 

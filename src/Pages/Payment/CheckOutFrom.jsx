@@ -1,7 +1,7 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Button } from "@mui/material";
+import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 import useAxiosHook from "../../Hooks/useAxiosHook";
 import { globalInstance } from "../../Hooks/useGlobalInstance";
@@ -113,43 +113,91 @@ const CheckOutFrom = ({ oneContestData }) => {
       });
   };
  
+  const {
+    contest_name,
+ 
+    image,
+    description,
+   
+    creatorInfo,
+  } = oneContestData;
+  
+    return (
+      <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 20 }}>
+      <img src={image} alt={contest_name} style={{ width: '100%', height: 200, objectFit: 'cover' }} />
+      <CardContent>
+        {/* Contest Details */}
+        <Typography variant="h5" gutterBottom>{contest_name}</Typography>
+        <Typography variant="subtitle1" gutterBottom>{description}</Typography>
+        {/* ... (display other contest details) */}
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "#aab7c4",
+        {/* Creator Info */}
+        <Grid container alignItems="center" spacing={2} marginTop={2}>
+          <Grid item>
+            <img src={creatorInfo.image} alt={creatorInfo.name} style={{ width: 50, height: 50, borderRadius: '50%', objectFit: 'cover' }} />
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1">{creatorInfo.name}</Typography>
+            <Typography variant="body2">{creatorInfo.email}</Typography>
+          </Grid>
+        </Grid>
+
+        {/* Payment Form */}
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '20px', marginTop: '20px' }}>
+            <Typography variant="h6" gutterBottom>
+              Payment Details
+            </Typography>
+            <CardElement
+              options={{
+                style: {
+                  base: {
+                    fontSize: "16px",
+                    color: "#424770",
+                    "::placeholder": {
+                      color: "#aab7c4",
+                    },
+                  },
+                  invalid: {
+                    color: "#9e2146",
+                  },
                 },
+              }}
+            />
+          </div>
+          <Button
+            type="submit"
+            disabled={!stripe}
+            variant="contained"
+            sx={{
+              backgroundColor: '#3f51b5',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#303f9f',
               },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
-      </div>
-      <Button type="submit" disabled={!stripe}>
-        Pay
-      </Button>
-      {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {/* {paymentSuccess && <p style={{ color: "green" }}>Payment successful!</p>} */}
-
-      {/* payment id section  */}
-      <div className="mt-4">
-        {paymentSuccess && paymentId ? (
-          <p style={{ color: "green" }}>Payment Id : {paymentId}</p>
-        ) : (
-          <p style={{ color: "red" }}>{paymentIdError}</p>
-        )}
-      </div>
-    </form>
-  );
+              width: '100%',
+            }}
+          >
+            Pay
+          </Button>
+          {paymentError && <p style={{ color: "red", marginTop: '10px' }}>{paymentError}</p>}
+          {/* Responsive styles for Payment Id section */}
+          <div style={{ marginTop: '20px' }}>
+            {paymentSuccess && paymentId ? (
+              <Typography variant="body1" sx={{ color: "green" }}>
+                Payment Id: {paymentId}
+              </Typography>
+            ) : (
+              <Typography variant="body1" sx={{ color: "red" }}>
+                {paymentIdError}
+              </Typography>
+            )}
+          </div>
+        </form>
+      </CardContent>
+    </Card>
+    );
+  
 };
 
 export default CheckOutFrom;

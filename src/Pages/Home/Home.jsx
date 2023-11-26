@@ -1,9 +1,28 @@
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import BannarAndSearch from "../../Components/BannarAndSearch/Banner";
 import Search from "../../Components/Search/Search";
 import WinnerDisplay from "./WinnerDisplay/WinnerDisplay";
+import { useQuery } from "@tanstack/react-query";
+import { globalInstance } from "../../Hooks/useGlobalInstance";
+import { useState } from "react";
+import ContestCard from "./All Contest/ContestCard";
+import Heading from "../../shared/Heading";
 
 const Home = () => {
+  const [getSearchValue, setSearchValue] = useState("");
+  const { data: popularContestData = [] } = useQuery({
+    queryKey: ["popular", getSearchValue],
+    queryFn: async () => {
+      const res = await globalInstance.get(
+        `/popularContest?search=${getSearchValue}`
+      );
+      const fetchData = await res.data;
+      return fetchData;
+    },
+  });
+  console.log(popularContestData);
+  console.log(getSearchValue);
+
   return (
     <div>
       {/* banner and search  */}
@@ -18,7 +37,7 @@ const Home = () => {
             justifyContent={"center"}
             display={"flex"}
           >
-            <Search></Search>
+            <Search setSearchValue={setSearchValue}></Search>
           </Grid>
           <Grid item xs={12} md={7} lg={7}>
             <BannarAndSearch></BannarAndSearch>
@@ -26,8 +45,21 @@ const Home = () => {
         </Grid>
       </Grid>
 
-      <Grid sx={{ height: "100vh" }}></Grid>
-
+      {/* popular contest  */}
+      <Container maxWidth={"lg"} sx={{my:15}}>
+        <Heading
+          title={"Most Popular Contest"}
+          subtitle={"Explore our top-rated contests."}
+          additionalInfo={"Join these contests to showcase your skills and win exciting prizes!"}
+        ></Heading>
+        <Grid container spacing={4} justifyContent={"center"} display={"flex"}>
+          {popularContestData?.map((item) => (
+            <Grid key={item?._id} item sx={12} md={6} lg={4}  >
+              <ContestCard item={item}></ContestCard>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
       {/* gallary  */}
       <div>
         <WinnerDisplay></WinnerDisplay>
