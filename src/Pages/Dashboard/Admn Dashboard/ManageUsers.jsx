@@ -1,4 +1,3 @@
-
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,6 +8,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 // import CreatorActionButton from "./CreatorActionButton";
 import useGetAllUsers from "../../../Hooks/useGetAllUsers";
+import UpdateRoleManageUsers from "./UpdateRoleManageUsers";
+import { Button } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const ManageUsers = () => {
-const {allUserData} = useGetAllUsers()
+  const { allUserData, allUsersRefetch } = useGetAllUsers();
 
   return (
     <TableContainer component={Paper}>
@@ -51,13 +52,10 @@ const {allUserData} = useGetAllUsers()
               <StyledTableCell component="th" scope="row">
                 {item?.email}
               </StyledTableCell>
+              <StyledTableCell align="center"> {item?.name}</StyledTableCell>
+
               <StyledTableCell align="center">
-                {" "}
-               {item?.name}
-              </StyledTableCell>
-              
-              <StyledTableCell align="center">
-              <img
+                <img
                   src={item?.image}
                   style={{
                     height: "50px",
@@ -69,13 +67,19 @@ const {allUserData} = useGetAllUsers()
               </StyledTableCell>
               <StyledTableCell align="center">
                 {" "}
-               {item?.role}
+                {item?.role === "admin" ? (
+                  <Button color="error">{item?.role}</Button>
+                ) : (
+                  <Button>{item?.role}</Button>
+                )}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {/* <CreatorActionButton
-                  item={item}
-                  allContestDataRefetch={allContestDataRefetch}
-                /> */}
+                {item?.role !== "admin" && (
+                  <UpdateRoleManageUsers
+                    item={item}
+                    allUsersRefetch={allUsersRefetch}
+                  />
+                )}
               </StyledTableCell>
             </StyledTableRow>
           ))}
