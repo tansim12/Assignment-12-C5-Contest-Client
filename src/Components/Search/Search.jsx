@@ -13,7 +13,7 @@ const Search = ({setSearchValue}) => {
   const onSubmit = async (data) => {
     const search = data?.search 
     setSearchValue(search)
-    console.log(search);
+   
   };
 
   return (
@@ -34,7 +34,7 @@ const Search = ({setSearchValue}) => {
           <Grid container spacing={2}>
             <Grid item xs={9}>
               <TextField
-                {...register("search", { required: true })}
+                {...register("search", )}
                 autoComplete="given-name"
                 name="search"
                 fullWidth

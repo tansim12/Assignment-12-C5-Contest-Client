@@ -7,6 +7,7 @@ import { globalInstance } from "../../Hooks/useGlobalInstance";
 import { useState } from "react";
 import ContestCard from "./All Contest/ContestCard";
 import Heading from "../../shared/Heading";
+import NoDataFound from "../../shared/NoDataFound";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -20,7 +21,6 @@ const Home = () => {
       return fetchData;
     },
   });
-
 
   return (
     <div>
@@ -54,6 +54,8 @@ const Home = () => {
           }
         ></Heading>
         <Grid container spacing={4} justifyContent={"center"} display={"flex"}>
+          {popularContestData?.length === 0 && <NoDataFound />}
+
           {popularContestData?.map((item) => (
             <Grid key={item?._id} item sx={12} md={6} lg={4}>
               <ContestCard item={item}></ContestCard>
