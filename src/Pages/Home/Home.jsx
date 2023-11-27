@@ -20,15 +20,14 @@ const Home = () => {
       return fetchData;
     },
   });
-  console.log(popularContestData);
-  console.log(getSearchValue);
+
 
   return (
     <div>
       {/* banner and search  */}
 
       <Grid>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} width={"100%"} justifyContent={"center"}>
           <Grid
             item
             xs={12}
@@ -46,15 +45,17 @@ const Home = () => {
       </Grid>
 
       {/* popular contest  */}
-      <Container maxWidth={"lg"} sx={{my:15}}>
+      <Container maxWidth={"lg"} sx={{ my: 15 }}>
         <Heading
           title={"Most Popular Contest"}
           subtitle={"Explore our top-rated contests."}
-          additionalInfo={"Join these contests to showcase your skills and win exciting prizes!"}
+          additionalInfo={
+            "Join these contests to showcase your skills and win exciting prizes!"
+          }
         ></Heading>
         <Grid container spacing={4} justifyContent={"center"} display={"flex"}>
           {popularContestData?.map((item) => (
-            <Grid key={item?._id} item sx={12} md={6} lg={4}  >
+            <Grid key={item?._id} item sx={12} md={6} lg={4}>
               <ContestCard item={item}></ContestCard>
             </Grid>
           ))}

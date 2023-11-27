@@ -1,18 +1,29 @@
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
-import MyDateRangeComponent from "./MyDateRangeComponent";
-import React from "react";
+import MyDateRangeComponent from "./CreateContestCalender";
+import React, { useState } from "react";
+import hostImage from "../../../Hooks/hostImage";
+import toast from "react-hot-toast";
+import useAuthContext from "../../../Hooks/useAuthContext";
+const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
 
 const AddContest = () => {
-
-    const [age, setAge] = React.useState('');
-
-    const handleChange = (event) => {
-      setAge(event.target.value);
-    };
-  
-
+  const {user}= useAuthContext()
+  const [tagValue, setTagValue] = React.useState("");
+  const [dateValue , setDateValue] = useState()
+  const handleChange = (event) => {
+    setTagValue(event.target.value);
+  };
 
   const {
     register,
@@ -21,12 +32,35 @@ const AddContest = () => {
   } = useForm();
   const onSubmit = async (data) => {
     const img = data?.image[0];
+    const fromData = new FormData();
+    fromData.append("image", img);
+    const image = await hostImage(fromData);
+    const contest_name = data?.contest_name;
+    const tag = tagValue;
+    const price = parseInt(data?.price);
+    const rating = parseInt(data?.rating);
+    const description = data?.description;
+    const creatorInfo= {
+      name: user?.displayName,
+      image:user?.photoURL,
+      email:user?.email
+    }
+    if (!tag) {
+      return toast.error("Select Your Tag");
+    }
+    const info = { contest_name, image, tag, price, rating, description , total_join:0,
+      status: "pending",winner_status:false,creatorInfo
+    
+    };
+    console.log(info);
   };
+
+  console.log(dateValue);
   return (
     <div
       style={{
         width: "100%",
-        minHeight: "calc(100vh-40px)",
+        minHeight: "calc(100vh - 40px)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -34,99 +68,79 @@ const AddContest = () => {
         color: "#333",
       }}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "10px",
-            "@media (min-width: 768px)": {
-              gridTemplateColumns: "repeat(2, 1fr)",
-            },
-          }}
-        >
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
-            <Grid item xs={12} sm={6}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ width: "100%", maxWidth: "800px" }}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={6}>
+            <Box
+              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+            >
               <TextField
-                {...register("name", { required: true })}
+                {...register("contest_name", { required: true })}
                 autoComplete="given-name"
-                name="contestName"
+                name="contest_name"
                 fullWidth
                 id="Name"
                 label="Contest Name"
                 autoFocus
               />
-              {errors.contestName && (
-                <Typography variant="body2" color={"#d32f2f"}>
+              {errors.contest_name && (
+                <Typography variant="body2" color="#d32f2f">
                   This field is required
                 </Typography>
               )}
-            </Grid>
 
-            <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Select Tag
+                </InputLabel>
+                <Select
+                  value={tagValue}
+                  label="Select Tag"
+                  onChange={handleChange}
+                  labelId="demo-simple-select-label"
+                >
+                  {allTags?.map((tag) => (
+                    <MenuItem key={tag} value={tag}>
+                      {tag}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+          </Grid>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
+          <Grid item xs={12} lg={6}>
+            <Box
+              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
             >
-              <label htmlFor="location" style={{ color: "#333" }}>
-                Select Availability Range
-              </label>
-            
-              <MyDateRangeComponent></MyDateRangeComponent>
-            </div>
-          </div>
-
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
-            <Grid item xs={12} sm={6}>
               <TextField
-                {...register("name", { required: true })}
+                {...register("rating", {
+                  required: "This field is required",
+                  min: {
+                    value: 1,
+                    message: "Rating should not be less than 1",
+                  },
+                  max: {
+                    value: 5,
+                    message: "Rating should not be more than 5",
+                  },
+                })}
                 autoComplete="given-name"
-                name="name"
+                name="rating"
                 fullWidth
-                id="Name"
-                label="pogp"
+                type="number"
+                label="Rating"
                 autoFocus
               />
-              {errors.name && (
-                <Typography variant="body2" color={"#d32f2f"}>
-                  This field is required
+              {errors.rating && (
+                <Typography variant="body2" color="#d32f2f">
+                  {errors.rating.message}
                 </Typography>
               )}
-            </Grid>
 
-            <div
-              style={{
-                padding: "1rem",
-                backgroundColor: "#fff",
-                width: "100%",
-                margin: "auto",
-                borderRadius: "8px",
-                border: "2px dashed #ccc",
-              }}
-            >
               <div
                 style={{
                   padding: "1rem",
@@ -139,90 +153,104 @@ const AddContest = () => {
               >
                 <div
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+                    padding: "1rem",
+                    backgroundColor: "#fff",
+                    width: "100%",
+                    margin: "auto",
+                    borderRadius: "8px",
+                    border: "2px dashed #ccc",
                   }}
                 >
-                  <label
-                    htmlFor="image"
+                  <div
                     style={{
-                      cursor: "pointer",
-                      backgroundColor: "#F43F5E",
-                      color: "#fff",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      fontWeight: "600",
-                      padding: "4px 12px",
-                      "&:hover": { backgroundColor: "#F43F5E" },
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
                     }}
                   >
-                    Upload Image
-                    <input
-                      style={{ display: "none" }}
-                      type="file"
-                      name="image"
-                      id="image"
-                      accept="image/*"
-                      // onChange={handleImageChange}
-                    />
-                  </label>
+                    <label
+                      htmlFor="image"
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "#1565c0",
+                        color: "#fff",
+                        border: "1px solid #ccc",
+                        borderRadius: "4px",
+                        fontWeight: "600",
+                        padding: "4px 12px",
+                        "&:hover": { backgroundColor: "#F43F5E" },
+                      }}
+                    >
+                      Upload Image
+                      <input
+                        style={{ display: "none" }}
+                        name="image"
+                        id="image"
+                        {...register("image", { required: true })}
+                        type="file"
+                      />
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <Grid item xs={12} sm={6}>
+              <Box sx={{ position: "relative" }}>
+                {/* Calendar Component */}
+                <MyDateRangeComponent setDateValue={setDateValue}
+                  style={{ position: "absolute", top: 0, right: 0 }}
+                />
+              </Box>
+            </Box>
+
+            <Box
+              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+            >
               <TextField
-                {...register("name", { required: true })}
+                {...register("price", {
+                  required: "This field is required",
+                  min: {
+                    value: 1,
+                    message: "Price should not be less than 1",
+                  },
+                })}
                 autoComplete="given-name"
-                name="name"
+                name="price"
                 fullWidth
-                id="Name"
-                label=" Name"
-                autoFocus
+                type="number"
+                label="Price"
               />
-              {errors.name && (
-                <Typography variant="body2" color={"#d32f2f"}>
-                  This field is required
+              {errors.price && (
+                <Typography variant="body2" color="#d32f2f">
+                  {errors.price.message}
                 </Typography>
               )}
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
               <TextField
-                {...register("name", { required: true })}
+                {...register("description", {
+                  required: "This field is required",
+                  min: {
+                    value: 10,
+                    message: "Description should not be less than 10",
+                  },
+                  max: {
+                    value: 250,
+                    message: "Description should not be more than 255",
+                  },
+                })}
                 autoComplete="given-name"
-                name="name"
+                name="description"
                 fullWidth
-                id="Name"
-                label=" Name"
-                autoFocus
+                multiline
+                maxRows={10}
+                label="Description"
               />
-              {errors.name && (
-                <Typography variant="body2" color={"#d32f2f"}>
-                  This field is required
+              {errors.description && (
+                <Typography variant="body2" color="#d32f2f">
+                  {errors.description.message}
                 </Typography>
               )}
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                {...register("name", { required: true })}
-                autoComplete="given-name"
-                name="name"
-                fullWidth
-                id="Name"
-                label=" Name"
-                autoFocus
-              />
-              {errors.name && (
-                <Typography variant="body2" color={"#d32f2f"}>
-                  This field is required
-                </Typography>
-              )}
-            </Grid>
-          </div>
-        </div>
+            </Box>
+          </Grid>
+        </Grid>
 
         <Button
           type="submit"
@@ -231,10 +259,8 @@ const AddContest = () => {
           color="primary"
           size="large"
           style={{ marginTop: "1.5rem" }}
-          //   disabled={loading}
-          //   onClick={handleSubmit}
         >
-          submit
+          Submit
         </Button>
       </form>
     </div>

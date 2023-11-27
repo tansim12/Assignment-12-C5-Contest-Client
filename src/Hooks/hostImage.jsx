@@ -6,6 +6,7 @@ const hostImage = async (fromData) => {
     fromData
   );
   const fetchData = await res.data;
+
   return fetchData?.data?.display_url;
 };
 
