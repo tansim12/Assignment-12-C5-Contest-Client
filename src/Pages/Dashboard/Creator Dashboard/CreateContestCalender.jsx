@@ -3,7 +3,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Make sure to import the styles
 import 'react-date-range/dist/theme/default.css'; // Optional theme import
 
-const MyDateRangeComponent = ({setDateValue}) => {
+const MyDateRangeComponent = ({setDateValue , dateValue}) => {
   const [dateRange, setDateRange] = useState([
     {
       startDate: new Date(),
@@ -13,9 +13,8 @@ const MyDateRangeComponent = ({setDateValue}) => {
   ]);
 
   const handleSelect = (ranges) => {
-    // When a date range is selected, update the state with the selected range
     setDateRange([ranges.selection]);
-    setDateValue(dateRange)
+    setDateValue([ranges.selection])
   };
 // console.log(dateRange);
   return (
@@ -26,8 +25,9 @@ const MyDateRangeComponent = ({setDateValue}) => {
         moveRangeOnFirstSelection={false}
         editableDateInputs={true}
         dragSelectionEnabled={true}
-      //   minDate={value.startDate}
-      // maxDate={value.endDate}
+        minDate={new Date()}
+       
+        
       />
       {/* Display selected range */}
       <div>

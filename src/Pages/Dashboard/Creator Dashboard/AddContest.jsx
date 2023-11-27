@@ -15,12 +15,15 @@ import React, { useState } from "react";
 import hostImage from "../../../Hooks/hostImage";
 import toast from "react-hot-toast";
 import useAuthContext from "../../../Hooks/useAuthContext";
+import Swal from "sweetalert2";
+import useAxiosHook from "../../../Hooks/useAxiosHook";
 const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
 
 const AddContest = () => {
-  const {user}= useAuthContext()
+  const { user } = useAuthContext();
+  const instance = useAxiosHook();
   const [tagValue, setTagValue] = React.useState("");
-  const [dateValue , setDateValue] = useState()
+  const [dateValue, setDateValue] = useState([]);
   const handleChange = (event) => {
     setTagValue(event.target.value);
   };
@@ -40,22 +43,60 @@ const AddContest = () => {
     const price = parseInt(data?.price);
     const rating = parseInt(data?.rating);
     const description = data?.description;
-    const creatorInfo= {
+    const from = dateValue[0]?.startDate;
+    const to = dateValue[0]?.endDate;
+
+    const creatorInfo = {
       name: user?.displayName,
-      image:user?.photoURL,
-      email:user?.email
-    }
+      image: user?.photoURL,
+      email: user?.email,
+    };
     if (!tag) {
       return toast.error("Select Your Tag");
     }
-    const info = { contest_name, image, tag, price, rating, description , total_join:0,
-      status: "pending",winner_status:false,creatorInfo
-    
+    if (!from && !to) {
+      return toast.error("Select Your Dates");
+    }
+
+    const info = {
+      contest_name,
+      image,
+      tag,
+      price,
+      rating,
+      description,
+      total_join: 0,
+      status: "pending",
+      winner_status: false,
+      creatorInfo,
+      from,
+      to,
     };
     console.log(info);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Added it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await instance.post("/addContest", info);
+        const fetchData = await res.data;
+        if (fetchData.success) {
+          Swal.fire({
+            title: "Added!",
+            text: "Your Contest Request send By Admin.",
+            icon: "success",
+          });
+        }
+      }
+    });
   };
 
-  console.log(dateValue);
   return (
     <div
       style={{
@@ -196,7 +237,9 @@ const AddContest = () => {
 
               <Box sx={{ position: "relative" }}>
                 {/* Calendar Component */}
-                <MyDateRangeComponent setDateValue={setDateValue}
+                <MyDateRangeComponent
+                  setDateValue={setDateValue}
+                  dateValue={dateValue}
                   style={{ position: "absolute", top: 0, right: 0 }}
                 />
               </Box>
