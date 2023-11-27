@@ -1,4 +1,4 @@
-import useOneCreatorALLContest from "../../../Hooks/useOneCreatorALLContest";
+
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,7 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import CreatorActionButton from "./CreatorActionButton";
+// import CreatorActionButton from "./CreatorActionButton";
+import useGetAllUsers from "../../../Hooks/useGetAllUsers";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,30 +30,34 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const MyCreated = () => {
-  const { allContestData, allContestDataRefetch } = useOneCreatorALLContest();
+const ManageUsers = () => {
+const {allUserData} = useGetAllUsers()
 
   return (
     <TableContainer component={Paper}>
       <Table aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Email</StyledTableCell>
+            <StyledTableCell align="center">Name</StyledTableCell>
             <StyledTableCell align="center">Image</StyledTableCell>
-            <StyledTableCell align="center">Tag</StyledTableCell>
-            <StyledTableCell align="center">Date</StyledTableCell>
+            <StyledTableCell align="center">Role</StyledTableCell>
             <StyledTableCell align="center">Action</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {allContestData?.map((item) => (
+          {allUserData?.map((item) => (
             <StyledTableRow key={item?._id}>
               <StyledTableCell component="th" scope="row">
-                {item?.contest_name}
+                {item?.email}
               </StyledTableCell>
               <StyledTableCell align="center">
                 {" "}
-                <img
+               {item?.name}
+              </StyledTableCell>
+              
+              <StyledTableCell align="center">
+              <img
                   src={item?.image}
                   style={{
                     height: "50px",
@@ -62,15 +67,15 @@ const MyCreated = () => {
                   alt=""
                 />
               </StyledTableCell>
-              <StyledTableCell align="center">{item?.tag}</StyledTableCell>
               <StyledTableCell align="center">
-                {item?.from} <br /> {item?.to}
+                {" "}
+               {item?.role}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <CreatorActionButton
+                {/* <CreatorActionButton
                   item={item}
                   allContestDataRefetch={allContestDataRefetch}
-                />
+                /> */}
               </StyledTableCell>
             </StyledTableRow>
           ))}
@@ -80,4 +85,4 @@ const MyCreated = () => {
   );
 };
 
-export default MyCreated;
+export default ManageUsers;

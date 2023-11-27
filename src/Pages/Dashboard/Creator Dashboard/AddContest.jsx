@@ -17,6 +17,8 @@ import toast from "react-hot-toast";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
 import useAxiosHook from "../../../Hooks/useAxiosHook";
+import Heading from "../../../shared/Heading";
+import { Helmet } from "react-helmet-async";
 const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
 
 const AddContest = () => {
@@ -72,7 +74,6 @@ const AddContest = () => {
       from,
       to,
     };
-   
 
     Swal.fire({
       title: "Are you sure?",
@@ -98,100 +99,102 @@ const AddContest = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        minHeight: "calc(100vh - 40px)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "#333",
-      }}
-    >
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        style={{ width: "100%", maxWidth: "800px" }}
+    <Grid>
+        <Helmet><title>Add Contest</title></Helmet>
+      <Grid sx={{ mb: 5 }}>
+        <Heading
+          title={"Add Your Contest"}
+          additionalInfo={"Transforming Lifestyles, One Step at a Time"}
+          subtitle={
+            "Celebrating Innovation and Originality in [Specific Field or Industry"
+          }
+        />
+      </Grid>
+
+      <div
+        style={{
+          width: "100%",
+          minHeight: "calc(100vh - 40px)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "#333",
+        }}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={12} lg={6}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-            >
-              <TextField
-                {...register("contest_name", { required: true })}
-                autoComplete="given-name"
-                name="contest_name"
-                fullWidth
-                id="Name"
-                label="Contest Name"
-                autoFocus
-              />
-              {errors.contest_name && (
-                <Typography variant="body2" color="#d32f2f">
-                  This field is required
-                </Typography>
-              )}
-
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
-                  Select Tag
-                </InputLabel>
-                <Select
-                  value={tagValue}
-                  label="Select Tag"
-                  onChange={handleChange}
-                  labelId="demo-simple-select-label"
-                >
-                  {allTags?.map((tag) => (
-                    <MenuItem key={tag} value={tag}>
-                      {tag}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} lg={6}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-            >
-              <TextField
-                {...register("rating", {
-                  required: "This field is required",
-                  min: {
-                    value: 1,
-                    message: "Rating should not be less than 1",
-                  },
-                  max: {
-                    value: 5,
-                    message: "Rating should not be more than 5",
-                  },
-                })}
-                autoComplete="given-name"
-                name="rating"
-                fullWidth
-                type="number"
-                label="Rating"
-                autoFocus
-              />
-              {errors.rating && (
-                <Typography variant="body2" color="#d32f2f">
-                  {errors.rating.message}
-                </Typography>
-              )}
-
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "#fff",
-                  width: "100%",
-                  margin: "auto",
-                  borderRadius: "8px",
-                  border: "2px dashed #ccc",
-                }}
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          style={{ width: "100%", maxWidth: "800px" }}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={12} lg={6}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
               >
+                <TextField
+                  {...register("contest_name", { required: true })}
+                  autoComplete="given-name"
+                  name="contest_name"
+                  fullWidth
+                  id="Name"
+                  label="Contest Name"
+                  autoFocus
+                />
+                {errors.contest_name && (
+                  <Typography variant="body2" color="#d32f2f">
+                    This field is required
+                  </Typography>
+                )}
+
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Select Tag
+                  </InputLabel>
+                  <Select
+                    value={tagValue}
+                    label="Select Tag"
+                    onChange={handleChange}
+                    labelId="demo-simple-select-label"
+                  >
+                    {allTags?.map((tag) => (
+                      <MenuItem key={tag} value={tag}>
+                        {tag}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Box>
+            </Grid>
+
+            <Grid item xs={12} lg={6}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+              >
+                <TextField
+                  {...register("rating", {
+                    required: "This field is required",
+                    min: {
+                      value: 1,
+                      message: "Rating should not be less than 1",
+                    },
+                    max: {
+                      value: 5,
+                      message: "Rating should not be more than 5",
+                    },
+                  })}
+                  autoComplete="given-name"
+                  name="rating"
+                  fullWidth
+                  type="number"
+                  label="Rating"
+                  autoFocus
+                />
+                {errors.rating && (
+                  <Typography variant="body2" color="#d32f2f">
+                    {errors.rating.message}
+                  </Typography>
+                )}
+
                 <div
                   style={{
                     padding: "1rem",
@@ -204,109 +207,120 @@ const AddContest = () => {
                 >
                   <div
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
+                      padding: "1rem",
+                      backgroundColor: "#fff",
+                      width: "100%",
+                      margin: "auto",
+                      borderRadius: "8px",
+                      border: "2px dashed #ccc",
                     }}
                   >
-                    <label
-                      htmlFor="image"
+                    <div
                       style={{
-                        cursor: "pointer",
-                        backgroundColor: "#1565c0",
-                        color: "#fff",
-                        border: "1px solid #ccc",
-                        borderRadius: "4px",
-                        fontWeight: "600",
-                        padding: "4px 12px",
-                        "&:hover": { backgroundColor: "#F43F5E" },
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
                       }}
                     >
-                      Upload Image
-                      <input
-                        style={{ display: "none" }}
-                        name="image"
-                        id="image"
-                        {...register("image", { required: true })}
-                        type="file"
-                      />
-                    </label>
+                      <label
+                        htmlFor="image"
+                        style={{
+                          cursor: "pointer",
+                          backgroundColor: "#1565c0",
+                          color: "#fff",
+                          border: "1px solid #ccc",
+                          borderRadius: "4px",
+                          fontWeight: "600",
+                          padding: "4px 12px",
+                          "&:hover": { backgroundColor: "#F43F5E" },
+                        }}
+                      >
+                        Upload Image
+                        <input
+                          style={{ display: "none" }}
+                          name="image"
+                          id="image"
+                          {...register("image", { required: true })}
+                          type="file"
+                        />
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <Box sx={{ position: "relative" }}>
-                {/* Calendar Component */}
-                <MyDateRangeComponent
-                  setDateValue={setDateValue}
-                  dateValue={dateValue}
-                  style={{ position: "absolute", top: 0, right: 0 }}
-                />
+                <Box sx={{ position: "relative" }}>
+                  {/* Calendar Component */}
+                  <MyDateRangeComponent
+                    setDateValue={setDateValue}
+                    dateValue={dateValue}
+                    style={{ position: "absolute", top: 0, right: 0 }}
+                  />
+                </Box>
               </Box>
-            </Box>
 
-            <Box
-              sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-            >
-              <TextField
-                {...register("price", {
-                  required: "This field is required",
-                  min: {
-                    value: 1,
-                    message: "Price should not be less than 1",
-                  },
-                })}
-                autoComplete="given-name"
-                name="price"
-                fullWidth
-                type="number"
-                label="Price"
-              />
-              {errors.price && (
-                <Typography variant="body2" color="#d32f2f">
-                  {errors.price.message}
-                </Typography>
-              )}
-              <TextField
-                {...register("description", {
-                  required: "This field is required",
-                  min: {
-                    value: 10,
-                    message: "Description should not be less than 10",
-                  },
-                  max: {
-                    value: 250,
-                    message: "Description should not be more than 255",
-                  },
-                })}
-                autoComplete="given-name"
-                name="description"
-                fullWidth
-                multiline
-                maxRows={10}
-                label="Description"
-              />
-              {errors.description && (
-                <Typography variant="body2" color="#d32f2f">
-                  {errors.description.message}
-                </Typography>
-              )}
-            </Box>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+              >
+                <TextField
+                  {...register("price", {
+                    required: "This field is required",
+                    min: {
+                      value: 1,
+                      message: "Price should not be less than 1",
+                    },
+                  })}
+                  autoComplete="given-name"
+                  name="price"
+                  fullWidth
+                  type="number"
+                  label="Price"
+                />
+                {errors.price && (
+                  <Typography variant="body2" color="#d32f2f">
+                    {errors.price.message}
+                  </Typography>
+                )}
+                <TextField
+                  {...register("description", {
+                    required: "This field is required",
+                    min: {
+                      value: 10,
+                      message: "Description should not be less than 10",
+                    },
+                    max: {
+                      value: 250,
+                      message: "Description should not be more than 255",
+                    },
+                  })}
+                  autoComplete="given-name"
+                  name="description"
+                  fullWidth
+                  multiline
+                  maxRows={10}
+                  label="Description"
+                />
+                {errors.description && (
+                  <Typography variant="body2" color="#d32f2f">
+                    {errors.description.message}
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
 
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          size="large"
-          style={{ marginTop: "1.5rem" }}
-        >
-          Submit
-        </Button>
-      </form>
-    </div>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ marginTop: "1.5rem" }}
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
+    </Grid>
   );
 };
 

@@ -5,6 +5,7 @@ import useFindOneContest from "../../../Hooks/useFindOneContest";
 import Countdown from "react-countdown";
 
 import CardContest from "./CardContest";
+import { Helmet } from "react-helmet-async";
 
 const ContestDetailsDiv = () => {
   
@@ -26,6 +27,7 @@ const ContestDetailsDiv = () => {
 
   return (
     <Grid>
+      <Helmet><title>{oneContestData?.tag}</title></Helmet>
       <Grid container spacing={2}>
         <Grid item xs={12}></Grid>
         <Grid item xs={12}>

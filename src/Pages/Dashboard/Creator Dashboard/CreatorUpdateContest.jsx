@@ -19,6 +19,8 @@ import {
   import useAxiosHook from "../../../Hooks/useAxiosHook";
 import useFindOneContest from "../../../Hooks/useFindOneContest";
 import { useParams } from "react-router-dom";
+import Heading from "../../../shared/Heading";
+import { Helmet } from "react-helmet-async";
   const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
   
   const CreatorUpdateContest = () => {
@@ -104,6 +106,20 @@ import { useParams } from "react-router-dom";
     };
   
     return (
+
+      <Grid>
+        <Helmet><title>Update Contest</title></Helmet>
+         <Grid sx={{ mb: 5 }}>
+        <Heading
+          title={"----UPDATE----"}
+          additionalInfo={"Transforming Lifestyles, One Step at a Time"}
+          subtitle={
+            "Celebrating Innovation and Originality in [Specific Field or Industry"
+          }
+        />
+      </Grid>
+      
+
       <div
         style={{
           width: "100%",
@@ -317,6 +333,7 @@ import { useParams } from "react-router-dom";
           </Button>
         </form>
       </div>
+      </Grid>
     );
   };
   

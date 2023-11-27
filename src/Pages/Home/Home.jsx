@@ -65,6 +65,15 @@ const Home = () => {
       </Container>
       {/* gallary  */}
       <div>
+        <Grid sx={{mb:10}}>
+          <Heading
+            title={"Victory's Parade"}
+            subtitle={"Celebrating Achievements Worth Applauding"}
+            additionalInfo={
+              "Where Greatness Takes Center Stage.Where Success Stories Inspire"
+            }
+          />
+        </Grid>
         <WinnerDisplay></WinnerDisplay>
       </div>
     </div>

@@ -17,6 +17,8 @@ import AddContest from "../../Pages/Dashboard/Creator Dashboard/AddContest";
 import MyCreated from "../../Pages/Dashboard/Creator Dashboard/MyCreated";
 import CreatorUpdateContest from "../../Pages/Dashboard/Creator Dashboard/CreatorUpdateContest";
 import CreatorPrivateRoute from "./CreatorPrivateRoute";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+import ManageUsers from "../../Pages/Dashboard/Admn Dashboard/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +98,16 @@ const router = createBrowserRouter([
             {" "}
             <MyCreated></MyCreated>
           </CreatorPrivateRoute>
+        ),
+      },
+
+      // admin section
+      {
+        path: "manageUsers",
+        element: (
+          <AdminPrivateRoute>
+            <ManageUsers />
+          </AdminPrivateRoute>
         ),
       },
     ],

@@ -55,11 +55,11 @@ const LogOutAndDashboard = () => {
               <Button>Dashboard</Button>
             </Link>
           )}
-          {/* {currentRole?.currentRole === "admin" && (
-            <Link to={"/dashboard/myContest"}>
+          {currentRole?.currentRole === "admin" && (
+            <Link to={"/dashboard/manageUsers"}>
               <Button>Dashboard</Button>
             </Link>
-          )} */}
+          )}
           ,<Button onClick={handleLogout}>Logout</Button>,
         </ButtonGroup>
       </Box>
