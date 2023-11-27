@@ -61,7 +61,8 @@ import { Helmet } from "react-helmet-async";
       if (!tag) {
         return toast.error("Select Your Tag");
       }
-      if (!from && !to) {
+    
+      if (!from || !to) {
         return toast.error("Select Your Dates");
       }
   

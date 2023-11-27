@@ -12,14 +12,15 @@ import toast from "react-hot-toast";
 
 const UpdateRoleManageUsers = ({ item, allUsersRefetch }) => {
   const instance = useAxiosHook();
-  const [roleValue, setRoleValue] = useState([]);
+  const [roleValue, setRoleValue] = useState("");
   const handleChange = (event) => {
     setRoleValue(event.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const selectRole = roleValue;
-    if (selectRole) {
+    console.log(selectRole);
+    if (!selectRole) {
       return toast.error("Select your role ...");
     }
 

@@ -56,9 +56,13 @@ const AddContest = () => {
     if (!tag) {
       return toast.error("Select Your Tag");
     }
-    if (!from && !to) {
+  
+    if (!from || !to) {
       return toast.error("Select Your Dates");
     }
+      // if (!img) {
+    //   return toast.error("Select Your Dates");
+    // }
 
     const info = {
       contest_name,

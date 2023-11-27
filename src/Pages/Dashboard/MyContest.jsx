@@ -1,11 +1,11 @@
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import CallMadeIcon from "@mui/icons-material/CallMade";
+// import CallMadeIcon from "@mui/icons-material/CallMade";
 import ParticipanteCard from "./User Dashboard/ParticipanteCard";
 import {
   Box,
-  Button,
+  // Button,
   FormControl,
   Grid,
   InputLabel,
@@ -16,7 +16,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosHook from "../../Hooks/useAxiosHook";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useQuery } from "@tanstack/react-query";
-import CallReceivedIcon from "@mui/icons-material/CallReceived";
+// import CallReceivedIcon from "@mui/icons-material/CallReceived";
 // todo sorting feature to show My upcoming Contests to the user.
 const MyContest = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
