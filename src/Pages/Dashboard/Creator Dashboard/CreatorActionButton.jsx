@@ -1,14 +1,37 @@
 import { Button, ButtonGroup } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Swal from "sweetalert2";
+import useAxiosHook from "../../../Hooks/useAxiosHook";
+import { Link } from "react-router-dom";
 
 const CreatorActionButton = ({ item, allContestDataRefetch }) => {
+  const instance = useAxiosHook();
   const handleDelete = () => {
-    console.log("delete");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await instance.delete(`/contest/${item?._id}`);
+        const fetchData = await res.data;
+        if (fetchData.success) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+          allContestDataRefetch();
+        }
+      }
+    });
   };
-  const handleEdit = () => {
-    console.log("edit");
-  };
+ 
   const handleSubmission = () => {
     console.log("submission");
   };
@@ -30,13 +53,11 @@ const CreatorActionButton = ({ item, allContestDataRefetch }) => {
         </Button>
 
         {/* edit button  */}
-        <Button
-          onClick={handleEdit}
-          disabled={item?.status === "approved"}
-          color="secondary"
-        >
-          <EditIcon />
-        </Button>
+        <Link to={`/dashboard/creatorUpdateContest/${item?._id}`}>
+          <Button disabled={item?.status === "approved"} color="secondary">
+            <EditIcon />
+          </Button>
+        </Link>
 
         {/* submission button   */}
         {item?.status === "approved" && (

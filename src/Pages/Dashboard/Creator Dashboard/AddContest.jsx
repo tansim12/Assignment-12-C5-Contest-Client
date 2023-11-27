@@ -72,7 +72,7 @@ const AddContest = () => {
       from,
       to,
     };
-    console.log(info);
+   
 
     Swal.fire({
       title: "Are you sure?",
