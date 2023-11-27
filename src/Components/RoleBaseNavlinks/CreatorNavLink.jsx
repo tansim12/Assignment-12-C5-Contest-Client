@@ -11,7 +11,7 @@ const CreatorNavLink = () => {
           <AddCircleOutlineOutlinedIcon sx={{ mr: 2 }} /> Add Contest
         </Button>
       </NavLink>
-      <NavLink to="" exact activeClassName="active-link">
+      <NavLink to="/dashboard/myCreated" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
           <SchoolOutlinedIcon sx={{ mr: 2 }} /> My Created
         </Button>

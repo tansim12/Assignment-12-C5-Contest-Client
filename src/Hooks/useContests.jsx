@@ -12,8 +12,6 @@ const useContests = () => {
     },
   });
 
-
-
   return { contestData, contestRefetch };
 };
 

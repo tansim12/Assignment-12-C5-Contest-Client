@@ -14,6 +14,7 @@ import Profile from "../../Pages/Dashboard/Profile";
 import MyWining from "../../Pages/Dashboard/MyWining";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import AddContest from "../../Pages/Dashboard/Creator Dashboard/AddContest";
+import MyCreated from "../../Pages/Dashboard/Creator Dashboard/MyCreated";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "addContest",
         element: <AddContest></AddContest>,
+      },
+      {
+        path: "myCreated",
+        element: <MyCreated></MyCreated>,
       },
     ],
   },
