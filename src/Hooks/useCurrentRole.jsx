@@ -6,7 +6,7 @@ import useAuthContext from "./useAuthContext";
 const useCurrentRole = () => {
     const instance = useAxiosHook()
     const {user , userLoading}= useAuthContext()
-  const { data:currentRole } = useQuery({
+  const { data:currentRole , isLoading } = useQuery({
     queryKey: ["currentUserRole"],
     enabled: !userLoading && !!user?.email,
     queryFn: async () => {
@@ -15,7 +15,7 @@ const useCurrentRole = () => {
       return fetchData;
     },
   });
-  return { currentRole };
+  return { currentRole  , isLoading};
 };
 
 export default useCurrentRole;

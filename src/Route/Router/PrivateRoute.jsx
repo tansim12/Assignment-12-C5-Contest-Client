@@ -1,13 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
 
-import { Typography } from "@mui/material";
+
 import useAuthContext from "../../Hooks/useAuthContext";
+import YouTube from "../../Components/Loading Sckeleton/LoadingPage";
 
 const PrivateRoute = ({ children }) => {
   const loc = useLocation();
   const { user, userLoading } = useAuthContext();
   if (userLoading) {
-    return <Typography variant="h1"> loading</Typography>;
+    return <YouTube/>
   }
 
   if (!user) {

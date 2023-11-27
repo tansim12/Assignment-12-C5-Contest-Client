@@ -78,7 +78,7 @@ import { useParams } from "react-router-dom";
         to,
       };
      
-  console.log(info);
+  
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",

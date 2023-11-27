@@ -16,12 +16,13 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import AddContest from "../../Pages/Dashboard/Creator Dashboard/AddContest";
 import MyCreated from "../../Pages/Dashboard/Creator Dashboard/MyCreated";
 import CreatorUpdateContest from "../../Pages/Dashboard/Creator Dashboard/CreatorUpdateContest";
+import CreatorPrivateRoute from "./CreatorPrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeRoot></HomeRoot>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -74,15 +75,28 @@ const router = createBrowserRouter([
       },
       {
         path: "addContest",
-        element: <AddContest></AddContest>,
+        element: (
+          <CreatorPrivateRoute>
+            <AddContest></AddContest>
+          </CreatorPrivateRoute>
+        ),
       },
       {
         path: "creatorUpdateContest/:_id",
-        element: <CreatorUpdateContest />,
+        element: (
+          <CreatorPrivateRoute>
+            <CreatorUpdateContest />
+          </CreatorPrivateRoute>
+        ),
       },
       {
         path: "myCreated",
-        element: <MyCreated></MyCreated>,
+        element: (
+          <CreatorPrivateRoute>
+            {" "}
+            <MyCreated></MyCreated>
+          </CreatorPrivateRoute>
+        ),
       },
     ],
   },
