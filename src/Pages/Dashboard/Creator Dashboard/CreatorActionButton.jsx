@@ -3,9 +3,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 import useAxiosHook from "../../../Hooks/useAxiosHook";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreatorActionButton = ({ item, allContestDataRefetch }) => {
+const navigate = useNavigate()
+const handleUpdateLink=()=>{
+  navigate(`/dashboard/creatorUpdateContest/${item?._id}`)
+}
+
   const instance = useAxiosHook();
   const handleDelete = () => {
     Swal.fire({
@@ -31,7 +36,9 @@ const CreatorActionButton = ({ item, allContestDataRefetch }) => {
       }
     });
   };
+
  
+  // todo handle submission 
   const handleSubmission = () => {
     console.log("submission");
   };
@@ -53,11 +60,13 @@ const CreatorActionButton = ({ item, allContestDataRefetch }) => {
         </Button>
 
         {/* edit button  */}
-        <Link to={`/dashboard/creatorUpdateContest/${item?._id}`}>
-          <Button disabled={item?.status === "approved"} color="secondary">
+        
+          <Button 
+          onClick={handleUpdateLink}
+          disabled={item?.status === "approved"} color="secondary">
             <EditIcon />
           </Button>
-        </Link>
+       
 
         {/* submission button   */}
         {item?.status === "approved" && (

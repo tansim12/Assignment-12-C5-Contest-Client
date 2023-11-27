@@ -19,6 +19,7 @@ import CreatorUpdateContest from "../../Pages/Dashboard/Creator Dashboard/Creato
 import CreatorPrivateRoute from "./CreatorPrivateRoute";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import ManageUsers from "../../Pages/Dashboard/Admn Dashboard/ManageUsers";
+import ManageContest from "../../Pages/Dashboard/Admn Dashboard/ManageContest";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
         element: (
           <AdminPrivateRoute>
             <ManageUsers />
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: "manageContest",
+        element: (
+          <AdminPrivateRoute>
+            <ManageContest />
           </AdminPrivateRoute>
         ),
       },

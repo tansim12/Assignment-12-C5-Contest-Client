@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { globalInstance } from "./useGlobalInstance";
 
-const useContests = () => {
+const useContests = (currentPage, size) => {
   const { data: contestData = [], refetch: contestRefetch } = useQuery({
-    queryKey: ["contests"],
-    // enabled:  ,
+    queryKey: ["contests" , currentPage ,size],
+
     queryFn: async () => {
-      const res = await globalInstance.get("/contests");
+      const res = await globalInstance.get(
+        `/contests?page=${currentPage}&size=${size}`
+      );
       const fetchData = await res.data;
       return fetchData;
     },

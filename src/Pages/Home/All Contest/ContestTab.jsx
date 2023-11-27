@@ -25,7 +25,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ my:5 }}>
+        <Box sx={{ my: 5 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -48,10 +48,6 @@ function a11yProps(index) {
 
 const ContestTab = () => {
   const { contestData } = useContests();
-  // const { data = [] } = useAllContestTag();
-  // const allTags = data[0]?.allContestTag;
-  // console.log(allTags);
-
   const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
 
   const [currentTags, setCurrentTags] = React.useState(allTags[0]);
@@ -70,9 +66,11 @@ const ContestTab = () => {
   };
 
   React.useEffect(() => {
-    const filtered = contestData?.filter((item) => item?.tag === currentTags);
+    const filtered = contestData?.result?.filter(
+      (item) => item?.tag === currentTags
+    );
     setNewContestData(filtered);
-  }, [currentTags, contestData]);
+  }, [currentTags, contestData?.result]);
 
   return (
     <Grid>
@@ -108,8 +106,7 @@ const ContestTab = () => {
                 sx={{ p: 0 }}
                 gap={3}
               >
-                
-                {contestData
+                {contestData?.result
                   ?.filter((item) => item?.tag === tag)
                   .map((item) => (
                     // <Typography key={i}>{item?.tag}</Typography>
