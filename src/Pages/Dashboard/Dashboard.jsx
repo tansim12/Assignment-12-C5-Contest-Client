@@ -80,7 +80,11 @@ const ResponsiveDrawer = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            <img src="https://egamlio.vercel.app/images/logo.png" alt="" />
+            <img
+              style={{ width: "30%" }}
+              src="https://especio.themerex.net/splash/assets/img/logo.png"
+              alt=""
+            />
           </Typography>
         </Toolbar>
       </AppBar>
@@ -130,7 +134,6 @@ const ResponsiveDrawer = (props) => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-    
         <Toolbar />
 
         <Outlet />

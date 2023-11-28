@@ -1,8 +1,17 @@
-# React + Vite
+## Project Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- My project backend is managed by Mongoose.
+- My Project Frontend side or UI used by Material UI
+- Adding Payment section by most popular stripe.js . 
+- There is 3 role base dashboard . Admin , User , Creator Dashboard .
+- Using Axios Interceptor and implement 401 ,403 page.
+- Using AOS Animation package.
+- Using React spring.js Animation package.
+- Using Dynamic Counter in React-countdown package 
+- Using React Helmet. Change by dynamic title change.
+- Using React recharts by some chart 
 
-Currently, two official plugins are available:
+## Live Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+- [Client Side Live Link](https://bright-crisp-282e3c.netlify.app)

@@ -59,9 +59,15 @@ const Navbar = () => {
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
+               
+                
               }}
             >
-              <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
+              <img
+               style={{width:"50%"}}
+                src="https://especio.themerex.net/splash/assets/img/logo.png"
+                alt=""
+              />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -115,7 +121,11 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-              <img src="	https://egamlio.vercel.app/images/logo.png" alt="" />
+               <img
+               style={{width:"30%"}}
+                src="https://especio.themerex.net/splash/assets/img/logo.png"
+                alt=""
+              />
             </Typography>
             {/* large device  */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
