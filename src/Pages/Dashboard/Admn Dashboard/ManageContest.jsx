@@ -7,8 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import useGetAllUsers from "../../../Hooks/useGetAllUsers";
-import UpdateRoleManageUsers from "./UpdateRoleManageUsers";
 import { Button, Grid, Pagination, Stack } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import React from "react";

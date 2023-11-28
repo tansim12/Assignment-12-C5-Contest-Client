@@ -16,6 +16,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosHook from "../../Hooks/useAxiosHook";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useQuery } from "@tanstack/react-query";
+import NoDataFound from "../../shared/NoDataFound";
 // import CallReceivedIcon from "@mui/icons-material/CallReceived";
 // todo sorting feature to show My upcoming Contests to the user.
 const MyContest = () => {
@@ -73,13 +74,13 @@ const MyContest = () => {
       </div>
       {/* cart section  */}
       <div>
-        <Grid container spacing={3}>
+        {myContestData?.length > 0 ? <Grid container spacing={3}>
           {myContestData?.map((item) => (
             <Grid key={item?._id} item xs={12} sm={12} md={6} lg={4}>
               <ParticipanteCard item={item}></ParticipanteCard>
             </Grid>
           ))}
-        </Grid>
+        </Grid> : <NoDataFound/>}
       </div>
 
       {/* pagination */}

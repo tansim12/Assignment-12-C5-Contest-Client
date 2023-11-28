@@ -16,7 +16,7 @@ const CheckOutFrom = ({ oneContestData }) => {
   const [paymentId, setPaymentId] = useState("");
   const [paymentIdError, setPaymentIdError] = useState("");
   const { user } = useAuthContext();
-
+console.log(user?.photoURL);
   //   get clint secret by getting backend
   useEffect(() => {
     if (oneContestData?.price) {
@@ -81,12 +81,13 @@ const CheckOutFrom = ({ oneContestData }) => {
           // userPaymentDetails save by db
           const info = {
             email: user?.email,
+            image:user?.photoURL,
             participantName: user?.displayName,
             transactionId: result?.paymentIntent?.id,
             contestId: oneContestData?._id,
             price: oneContestData?.price.toFixed(2),
             creatorEmail: oneContestData?.creatorInfo?.email,
-            registerTime: new Date(), // todo : utc formate in moment js
+            registerTime: new Date(), 
           };
           const res = await instance.post("/userPaymentDetails", info);
           const fetchData = await res.data;

@@ -20,6 +20,7 @@ import CreatorPrivateRoute from "./CreatorPrivateRoute";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import ManageUsers from "../../Pages/Dashboard/Admn Dashboard/ManageUsers";
 import ManageContest from "../../Pages/Dashboard/Admn Dashboard/ManageContest";
+import SeeSubmission from "../../Pages/Dashboard/Creator Dashboard/SeeSubmission";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,15 @@ const router = createBrowserRouter([
           <CreatorPrivateRoute>
             {" "}
             <MyCreated></MyCreated>
+          </CreatorPrivateRoute>
+        ),
+      },
+      {
+        path: "seeSubmission/:_id",
+        element: (
+          <CreatorPrivateRoute>
+            {" "}
+            <SeeSubmission />
           </CreatorPrivateRoute>
         ),
       },
