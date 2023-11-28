@@ -4,8 +4,8 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "./styles.css";
 import DisplayCreatorCard from "./DisplayCreatorCard";
-import { useMediaQuery } from "@mui/material";
-import { useEffect, useState } from "react";
+// import { useMediaQuery } from "@mui/material";
+// import { useEffect, useState } from "react";
 
 
 
