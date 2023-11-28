@@ -19,10 +19,12 @@ import Swal from "sweetalert2";
 import useAxiosHook from "../../../Hooks/useAxiosHook";
 import Heading from "../../../shared/Heading";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
 
 const AddContest = () => {
   const { user } = useAuthContext();
+  const navigate= useNavigate()
   const instance = useAxiosHook();
   const [tagValue, setTagValue] = React.useState("");
   const [dateValue, setDateValue] = useState([]);
@@ -97,6 +99,7 @@ const AddContest = () => {
             text: "Your Contest Request send By Admin.",
             icon: "success",
           });
+          navigate("/dashboard/myCreated")
         }
       }
     });

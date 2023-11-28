@@ -18,7 +18,7 @@ import {
   import Swal from "sweetalert2";
   import useAxiosHook from "../../../Hooks/useAxiosHook";
 import useFindOneContest from "../../../Hooks/useFindOneContest";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Heading from "../../../shared/Heading";
 import { Helmet } from "react-helmet-async";
   const allTags = ["Article", "Business", "Gaming", "Photography", "Music"];
@@ -29,6 +29,7 @@ import { Helmet } from "react-helmet-async";
     
     const { user } = useAuthContext();
     const instance = useAxiosHook();
+    const navigate =useNavigate()
     const [tagValue, setTagValue] = React.useState("");
     const [dateValue, setDateValue] = useState([]);
     const handleChange = (event) => {
@@ -101,6 +102,7 @@ import { Helmet } from "react-helmet-async";
               icon: "success",
             });
             oneContestRefetch()
+            navigate("/dashboard/myCreated")
           }
         }
       });

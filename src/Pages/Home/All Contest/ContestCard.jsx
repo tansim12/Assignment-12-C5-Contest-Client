@@ -45,7 +45,7 @@ const ContestCard = ({ item }) => {
             Participate : {item?.total_join}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item?.description}
+            {item?.description?.slice(0,45)}
           </Typography>
         </CardContent>
       </CardActionArea>

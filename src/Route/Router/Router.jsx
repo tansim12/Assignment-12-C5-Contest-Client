@@ -77,6 +77,8 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile></Profile>,
       },
+
+      // creator section 
       {
         path: "addContest",
         element: (

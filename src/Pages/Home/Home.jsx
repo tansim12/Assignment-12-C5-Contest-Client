@@ -8,6 +8,7 @@ import { useState } from "react";
 import ContestCard from "./All Contest/ContestCard";
 import Heading from "../../shared/Heading";
 import NoDataFound from "../../shared/NoDataFound";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -24,6 +25,7 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet><title>Home</title></Helmet>
       {/* banner and search  */}
 
       <Grid>

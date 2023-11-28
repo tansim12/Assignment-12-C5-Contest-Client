@@ -41,14 +41,14 @@ const SeeSubmission = () => {
   const instance = useAxiosHook()
   const { _id:id } = useParams();
   const { oneContestData, oneContestRefetch } = useFindOneContest(id)
-  console.log(oneContestData?.winner_status);
+ 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [size, setSize] = React.useState(4);
 
   const { participantsAllData, participantsAllDataRefetch } =
     useEveryContestParticipants(id, currentPage, size);
 
-  const counts = Math.ceil(participantsAllData?.result?.length / size);
+  const counts = Math.ceil(participantsAllData?.totalParticipantCount / size);
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage); // Update current page number
   };
@@ -79,11 +79,12 @@ const SeeSubmission = () => {
         const fetchData = await res.data;
         if (fetchData.success) {
           Swal.fire({
-            title: "Confirm!",
-            text: "Your Status is update.",
+            title: "Winner!",
+            text: "Your Winner is selected",
             icon: "success",
           });
           participantsAllDataRefetch()
+          oneContestRefetch()
         }
       }
     });

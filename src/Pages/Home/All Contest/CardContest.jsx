@@ -47,7 +47,7 @@ const SingleDetailsComponent = ({ contest }) => {
           {contest?.contest_name}
         </Typography>
         <Typography variant="body1" color="text.secondary" marginBottom={2}>
-          {contest?.description}
+          {contest?.description?.slice(0,50)}
         </Typography>
 
         <Grid container spacing={isSmallScreen ? 1 : 3} marginBottom={2}>
