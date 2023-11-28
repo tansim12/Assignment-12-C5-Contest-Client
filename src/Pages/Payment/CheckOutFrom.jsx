@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import useAuthContext from "../../Hooks/useAuthContext";
 import useAxiosHook from "../../Hooks/useAxiosHook";
-import { globalInstance } from "../../Hooks/useGlobalInstance";
+// import { globalInstance } from "../../Hooks/useGlobalInstance";
 
 const CheckOutFrom = ({ oneContestData }) => {
   const instance = useAxiosHook();
@@ -93,8 +93,10 @@ console.log(user?.photoURL);
           const fetchData = await res.data;
           if (fetchData?.success) {
             let newTotalJoin = oneContestData?.total_join + 1;
-            console.log(newTotalJoin);
-            globalInstance
+            
+// change instance 
+
+            instance
               .patch(`/contest/${oneContestData?._id}`, {
                 total_join: newTotalJoin,
               })

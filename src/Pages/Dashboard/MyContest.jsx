@@ -74,13 +74,17 @@ const MyContest = () => {
       </div>
       {/* cart section  */}
       <div>
-        {myContestData?.length > 0 ? <Grid container spacing={3}>
-          {myContestData?.map((item) => (
-            <Grid key={item?._id} item xs={12} sm={12} md={6} lg={4}>
-              <ParticipanteCard item={item}></ParticipanteCard>
-            </Grid>
-          ))}
-        </Grid> : <NoDataFound/>}
+        {myContestData?.length > 0 ? (
+          <Grid container spacing={3}>
+            {myContestData?.map((item) => (
+              <Grid key={item?._id} item xs={12} sm={12} md={6} lg={4}>
+                <ParticipanteCard item={item}></ParticipanteCard>
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <NoDataFound />
+        )}
       </div>
 
       {/* pagination */}

@@ -9,6 +9,7 @@ import ContestCard from "./All Contest/ContestCard";
 import Heading from "../../shared/Heading";
 import NoDataFound from "../../shared/NoDataFound";
 import { Helmet } from "react-helmet-async";
+import DisplayCreator from "./DisplayCreator/DisplayCreator";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -25,7 +26,9 @@ const Home = () => {
 
   return (
     <div>
-      <Helmet><title>Home</title></Helmet>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       {/* banner and search  */}
 
       <Grid>
@@ -65,9 +68,26 @@ const Home = () => {
           ))}
         </Grid>
       </Container>
+
+      {/* display creator section  */}
+      <div>
+        <Grid>
+          <Heading
+            title={"Manage with Ease"}
+            subtitle={"Exploring the Genius Behind Our Innovation"}
+            additionalInfo={
+              "Highlight the creator's background, expertise, and any notable achievements or qualifications relevant to the creation."
+            }
+          />
+          <Container maxWidth={"md"} sx={{my:20}}>
+            <DisplayCreator />
+          </Container>
+        </Grid>
+      </div>
+
       {/* gallary  */}
       <div>
-        <Grid sx={{mb:10}}>
+        <Grid sx={{ mb: 10 }}>
           <Heading
             title={"Victory's Parade"}
             subtitle={"Celebrating Achievements Worth Applauding"}

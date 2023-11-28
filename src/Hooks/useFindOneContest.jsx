@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { globalInstance } from "./useGlobalInstance";
+import useAxiosHook from "./useAxiosHook";
 
 const useFindOneContest = (id) => {
+  const instance = useAxiosHook()
   const { data: oneContestData={}, refetch: oneContestRefetch } = useQuery({
     queryKey: ["findOneData"],
     queryFn: async () => {
-      const res = await globalInstance.get(`/contest/${id}`);
+      const res = await instance.get(`/contest/${id}`);
       const fetchData = await res.data;
       return fetchData;
     },
