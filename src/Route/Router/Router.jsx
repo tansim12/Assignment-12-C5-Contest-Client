@@ -23,6 +23,7 @@ import ManageContest from "../../Pages/Dashboard/Admn Dashboard/ManageContest";
 import SeeSubmission from "../../Pages/Dashboard/Creator Dashboard/SeeSubmission";
 import Leaderboard from "../../Pages/Leaderboard/Leaderboard";
 import Progress from "../../Pages/Progress/Progress";
+import FindUs from "../../Pages/FindUs/FindUs";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/progress",
         element: <Progress />,
+      },
+      {
+        path: "/findUs",
+        element: <FindUs />,
       },
       {
         path: "/allContest",

@@ -52,7 +52,7 @@ const Navbar = () => {
               noWrap
               component="a"
               sx={{
-                mr: 10,
+                mr: 1,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 800,
@@ -111,7 +111,7 @@ const Navbar = () => {
               component="a"
               src
               sx={{
-                mr: 2,
+                
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
                 fontFamily: "monospace",
@@ -119,10 +119,11 @@ const Navbar = () => {
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
+                width:"min-content"
               }}
             >
                <img
-               style={{width:"30%"}}
+               style={{width:"30%" ,}}
                 src="https://especio.themerex.net/splash/assets/img/logo.png"
                 alt=""
               />

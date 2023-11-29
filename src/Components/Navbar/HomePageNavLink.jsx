@@ -46,6 +46,12 @@ const HomePageNavLink = () => {
             to="/progress "
             component={Link}
           />
+          <Tab
+            value="five"
+            label="Find Us"
+            to="/findUs "
+            component={Link}
+          />
         </Tabs>
       </Box>
     </div>
