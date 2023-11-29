@@ -38,10 +38,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const SeeSubmission = () => {
-  const instance = useAxiosHook();
-  const { _id: id } = useParams();
-  const { oneContestData, oneContestRefetch } = useFindOneContest(id);
-
+  const instance = useAxiosHook()
+  const { _id:id } = useParams();
+  const { oneContestData, oneContestRefetch } = useFindOneContest(id)
+ 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [size, setSize] = React.useState(4);
 
@@ -54,14 +54,15 @@ const SeeSubmission = () => {
   };
 
   // handleConfirm
-  const handleConfirm = (_id, item) => {
-    console.log(_id, item);
+  const handleConfirm = (_id , item) => {
+    console.log(_id ,item);
     const winner = {
-      name: item?.participantName,
-      image: item?.image,
-      email: item?.email,
-    };
+      name:item?.participantName,
+      image:item?.image,
+      email:item?.email
 
+    }
+  
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -73,8 +74,7 @@ const SeeSubmission = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await instance.patch(`/creatorUpdateContest/${_id}`, {
-          winner_status: true,
-          winner: winner,
+          winner_status:true, winner:winner
         });
         const fetchData = await res.data;
         if (fetchData.success) {
@@ -83,89 +83,85 @@ const SeeSubmission = () => {
             text: "Your Winner is selected",
             icon: "success",
           });
-          participantsAllDataRefetch();
-          oneContestRefetch();
+          participantsAllDataRefetch()
+          oneContestRefetch()
         }
       }
     });
   };
   return (
     <Grid>
-      {participantsAllData?.result?.length > 0 ? (
-        <Grid>
-          <TableContainer component={Paper}>
-            <Helmet>
-              <title>Submission</title>
-            </Helmet>
-            <Table aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Email</StyledTableCell>
-                  <StyledTableCell align="center">Name</StyledTableCell>
-                  <StyledTableCell align="center">PaymentId</StyledTableCell>
-                  <StyledTableCell align="center">Image</StyledTableCell>
-                  <StyledTableCell align="center">Winner</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {participantsAllData?.result?.map((item) => (
-                  <StyledTableRow key={item?._id}>
-                    <StyledTableCell component="th" scope="row">
-                      {item?.email}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {" "}
-                      {item?.participantName}
-                    </StyledTableCell>
+   { participantsAllData?.result?.length > 0 ? <Grid>
+      <TableContainer component={Paper}>
+        <Helmet>
+          <title>Submission</title>
+        </Helmet>
+        <Table aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Email</StyledTableCell>
+              <StyledTableCell align="center">Name</StyledTableCell>
+              <StyledTableCell align="center">PaymentId</StyledTableCell>
+              <StyledTableCell align="center">Image</StyledTableCell>
+              <StyledTableCell align="center">Winner</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {participantsAllData?.result?.map((item) => (
+              <StyledTableRow key={item?._id}>
+                <StyledTableCell component="th" scope="row">
+                  {item?.email}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {" "}
+                  {item?.participantName}
+                </StyledTableCell>
 
-                    <StyledTableCell align="center">
-                      {item?.transactionId}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      <img
-                        src={item?.image}
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          borderRadius: "full",
-                        }}
-                        alt=""
-                      />
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      <Button
-                        disabled={oneContestData?.winner_status}
-                        variant="outlined"
-                        onClick={() => handleConfirm(item?.contestId, item)}
-                      >
-                        {oneContestData?.winner_status ? "Winner" : "Confirm"}
-                      </Button>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                <StyledTableCell align="center">
+                  {item?.transactionId}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <img
+                    src={item?.image}
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                      borderRadius: "full",
+                    }}
+                    alt=""
+                  />
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                  disabled={oneContestData?.winner_status}
+                    variant="outlined"
+                    onClick={() => handleConfirm(item?.contestId , item)}
+                  >
+                    Confirm
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
-          <Grid
-            justifyContent={"center"}
-            display={"flex"}
-            alignItems={"center"}
-            my={10}
-          >
-            <Stack spacing={2}>
-              <Pagination
-                count={counts}
-                color="primary"
-                page={currentPage}
-                onChange={handlePageChange}
-              />
-            </Stack>
-          </Grid>
-        </Grid>
-      ) : (
-        <NoDataFound />
-      )}
+      <Grid
+        justifyContent={"center"}
+        display={"flex"}
+        alignItems={"center"}
+        my={10}
+      >
+        <Stack spacing={2}>
+          <Pagination
+            count={counts}
+            color="primary"
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </Stack>
+      </Grid>
+    </Grid> : <NoDataFound/>}
     </Grid>
   );
 };
