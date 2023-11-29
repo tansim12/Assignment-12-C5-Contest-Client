@@ -9,7 +9,7 @@ const HomeRoot = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div style={{ marginTop: "100px" }}>
+      <div style={{ marginTop: "100px" , minHeight:"69vh" }}>
         <Outlet></Outlet>
       </div>
       {/* footer  */}

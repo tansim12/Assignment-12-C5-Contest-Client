@@ -21,6 +21,7 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import ManageUsers from "../../Pages/Dashboard/Admn Dashboard/ManageUsers";
 import ManageContest from "../../Pages/Dashboard/Admn Dashboard/ManageContest";
 import SeeSubmission from "../../Pages/Dashboard/Creator Dashboard/SeeSubmission";
+import Leaderboard from "../../Pages/Leaderboard/Leaderboard";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+      },
+      {
+        path:"/leaderboard",
+        element: <Leaderboard />,
       },
       {
         path: "/allContest",

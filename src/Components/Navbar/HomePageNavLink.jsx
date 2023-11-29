@@ -5,7 +5,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 
-
 const HomePageNavLink = () => {
   const [value, setValue] = React.useState("one");
 
@@ -35,7 +34,12 @@ const HomePageNavLink = () => {
             to="/allContest "
             component={Link}
           />
-          
+          <Tab
+            value="three"
+            label="Leaderboard"
+            to="/Leaderboard "
+            component={Link}
+          />
         </Tabs>
       </Box>
     </div>
