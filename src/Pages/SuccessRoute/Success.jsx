@@ -1,19 +1,20 @@
 import { Container, Grid } from "@mui/material";
-import BannerWithShar from "../../shared/BannerWithShar";
 import Heading from "../../shared/Heading";
-import FindMap from "./FindMap";
+import BannerWithShar from "../../shared/BannerWithShar";
+import SuccessGalary from "./SuccessGalary";
 
-const FindUs = () => {
+
+const Success = () => {
     return (
         <div>
         <Grid >
           <BannerWithShar
             image={
-              "https://i.ibb.co/rkrWgpM/pngtree-find-the-right-place-using-the-phone-gps-navigation-concept-vector-flat-illustration-banner.png"
+              "https://i.ibb.co/GF2gSW8/pngtree-businessman-jumps-on-graph-columns-on-the-way-to-success-banner-png-image-7698495.png"
             }
-            title={"Physical Address"}
+            title={"Success Story"}
             subTitle={
-              "Bangladesh , Dhaka , Dhanmondi-32 , email: ph@gmail.com"
+              "Insights, Strategies, and Inspirations for Personal and Professional Success"
             }
           />
         </Grid>
@@ -21,7 +22,7 @@ const FindUs = () => {
         <Container>
           <Grid>
             <Heading
-              title={"Find Us"}
+              title={"Our Event Moment"}
               subtitle={"Show the position or rank of each participant"}
               additionalInfo={
                 "This setup provides a clear title and subtitle that define the purpose of the leaderboard, along with key details that users would expect to see, such as rankings"
@@ -30,7 +31,7 @@ const FindUs = () => {
           </Grid>
           <Grid justifyContent={"center"} display={"flex"} alignItems={"center"}>
            <Container>
-           <FindMap />
+           <SuccessGalary/>
            </Container>
           </Grid>
         </Container>
@@ -38,4 +39,4 @@ const FindUs = () => {
     );
 };
 
-export default FindUs;
+export default Success;
