@@ -64,7 +64,7 @@ const UpdateRoleManageUsers = ({ item, allUsersRefetch }) => {
           >
             <MenuItem value={"admin"}>Admin</MenuItem>
             <MenuItem value={"creator"}>Creator</MenuItem>
-            <MenuItem value={"User"}>User</MenuItem>
+            <MenuItem value={"user"}>User</MenuItem>
           </Select>
           <Button type="submit" variant="outlined">
             Update
