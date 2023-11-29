@@ -22,6 +22,7 @@ import ManageUsers from "../../Pages/Dashboard/Admn Dashboard/ManageUsers";
 import ManageContest from "../../Pages/Dashboard/Admn Dashboard/ManageContest";
 import SeeSubmission from "../../Pages/Dashboard/Creator Dashboard/SeeSubmission";
 import Leaderboard from "../../Pages/Leaderboard/Leaderboard";
+import Progress from "../../Pages/Progress/Progress";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:"/leaderboard",
+        path: "/leaderboard",
         element: <Leaderboard />,
+      },
+      {
+        path: "/progress",
+        element: <Progress />,
       },
       {
         path: "/allContest",
@@ -83,7 +88,7 @@ const router = createBrowserRouter([
         element: <Profile></Profile>,
       },
 
-      // creator section 
+      // creator section
       {
         path: "addContest",
         element: (
