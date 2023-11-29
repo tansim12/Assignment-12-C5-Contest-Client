@@ -56,7 +56,7 @@ const ProgressChart = ({ totalWinnerData }) => {
   };
 
   return (
-    <PieChart width={400} height={400}>
+    <PieChart width={300} height={400}>
       <Pie
         dataKey="value"
         startAngle={360}
