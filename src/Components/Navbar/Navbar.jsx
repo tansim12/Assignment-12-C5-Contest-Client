@@ -165,7 +165,7 @@ const Navbar = () => {
                       <Avatar alt="Remy Sharp" src={user?.photoURL} />
                     </IconButton>
                     <Typography variant="body">
-                      {user?.displayName.slice(0, 8)}
+                      {user?.displayName?.slice(0, 8)}
                     </Typography>
                   </Box>
                 </Tooltip>

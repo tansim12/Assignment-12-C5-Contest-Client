@@ -10,7 +10,7 @@ import {
 import useWinnerContestDataByFindUser from "../../../Hooks/useWinnerContestDataByFindUser";
 import useTotalParticipantCount from "../../../Hooks/useTotalParticipantCount";
 
-// todo get data  total win and total register and validation one can not more same contest
+
 const ProfilePieChart = () => {
   const { winnerData } = useWinnerContestDataByFindUser();
   const { totalParticipant } = useTotalParticipantCount();

@@ -37,7 +37,7 @@ const CreatorActionButton = ({ item, allContestDataRefetch }) => {
     });
   };
 
-  // todo handle submission
+ 
   const handleSubmission = () => {
     navigate(`/dashboard/seeSubmission/${item?._id}`);
   };

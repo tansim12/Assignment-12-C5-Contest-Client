@@ -12,12 +12,12 @@ const AdminNavLinks = () => {
         activeClassName="active-link"
       >
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
-          <ManageHistoryOutlinedIcon sx={{ mr: 2 }} /> Manage Contest
+          <ManageHistoryOutlinedIcon sx={{ mr: 1 }} /> Manage Contest
         </Button>
       </NavLink>
       <NavLink to="/dashboard/manageUsers" exact activeClassName="active-link">
         <Button variant="outlined" sx={{ my: 1 }} fullWidth>
-          <PersonAddAltIcon sx={{ mr: 2 }} /> Manage User
+          <PersonAddAltIcon sx={{ mr: 1 }} /> Manage User
         </Button>
       </NavLink>
     </div>

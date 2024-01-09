@@ -10,37 +10,52 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import AddHomeIcon from "@mui/icons-material/AddHome";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import UserNavLinks from "../../Components/RoleBaseNavlinks/UserNavLinks";
 import AdminNavLinks from "../../Components/RoleBaseNavlinks/AdminNavLinks";
 import CreatorNavLink from "../../Components/RoleBaseNavlinks/CreatorNavLink";
 import useCurrentRole from "../../Hooks/useCurrentRole";
+import LogoutIcon from '@mui/icons-material/Logout';
+import useAuthContext from "../../Hooks/useAuthContext";
+import toast from "react-hot-toast";
 const drawerWidth = 240;
 
 const ResponsiveDrawer = (props) => {
   const { window } = props;
+  const navigate =useNavigate()
   const { currentRole } = useCurrentRole();
+  const {logOut} = useAuthContext()
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  // handleLogout
+  const handleLogout =()=>{
+    logOut().then(()=>{
+      toast.success("Log Out successfully done")
+      navigate("/")
+    })
+  } 
+
   const drawer = (
-    <div>
+    <div className="">
       <Toolbar />
       <Divider />
       {/* role base links  */}
-      <List>
+  
+      <List sx={{p:2}}>
         {currentRole?.currentRole === "user" && <UserNavLinks />}
         {currentRole?.currentRole === "creator" && <CreatorNavLink />}
         {currentRole?.currentRole === "admin" && <AdminNavLinks />}
       </List>
-      <Divider sx={{ border: 2, borderColor: "gray" }}></Divider>
+     
+      {/* <Divider sx={{ border: 2, borderColor: "gray" }}></Divider> */}
 
       {/* main links  */}
-      <List>
+      <List sx={{p:2}}>
         <NavLink to="/" exact activeClassName="active-link">
           <Button variant="outlined" sx={{ my: 3 }} fullWidth>
             <AddHomeIcon sx={{ mr: 2 }} /> Home
@@ -51,6 +66,11 @@ const ResponsiveDrawer = (props) => {
             <CallMadeIcon sx={{ mr: 2 }} /> All Contest
           </Button>
         </NavLink>
+        <Button
+        onClick={handleLogout}
+        variant="outlined" sx={{ my: 3 }}  fullWidth>
+            <LogoutIcon sx={{ mr: 2 }} /> Log out
+          </Button>
       </List>
     </div>
   );

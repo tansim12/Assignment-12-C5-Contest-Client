@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useWinnerAndChartData from "../../../Hooks/useWinnerAndChartData";
 
-// todo initial  data insert
+
 const data2 = [
   {
     css: "https://i.ibb.co/xhwDWMS/photo-1535713875002-d1d0cf377fde-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",

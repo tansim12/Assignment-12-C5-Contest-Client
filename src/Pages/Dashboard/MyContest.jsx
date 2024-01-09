@@ -18,7 +18,7 @@ import useAuthContext from "../../Hooks/useAuthContext";
 import { useQuery } from "@tanstack/react-query";
 import NoDataFound from "../../shared/NoDataFound";
 // import CallReceivedIcon from "@mui/icons-material/CallReceived";
-// todo sorting feature to show My upcoming Contests to the user.
+
 const MyContest = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [size, setSize] = React.useState(3);

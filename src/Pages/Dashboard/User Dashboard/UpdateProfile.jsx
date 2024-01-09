@@ -10,7 +10,7 @@ import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
 import useAxiosHook from "../../../Hooks/useAxiosHook";
 
-// todo use collection update name and image
+
 const UpdateProfile = () => {
   const { newUpdateProfile, user } = useAuthContext();
   const instance = useAxiosHook();
