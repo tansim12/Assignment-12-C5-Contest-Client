@@ -38,7 +38,7 @@ const Register = () => {
     const name = data?.name;
     const email = data?.email;
 
-    // console.log(image, role, name, email);
+
     const info = { image, role, name, email };
     const toastId = toast.loading("Register Successfully Done");
     registerFirebase(email, data?.password)

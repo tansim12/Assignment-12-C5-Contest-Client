@@ -10,6 +10,7 @@ import Heading from "../../shared/Heading";
 import NoDataFound from "../../shared/NoDataFound";
 import { Helmet } from "react-helmet-async";
 import DisplayCreator from "./DisplayCreator/DisplayCreator";
+import Map from "../../Components/leaflet Map/Map";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -97,6 +98,11 @@ const Home = () => {
           />
         </Grid>
         <WinnerDisplay></WinnerDisplay>
+      </div>
+
+      {/* leaflet map  */}
+      <div>
+        <Map />
       </div>
     </div>
   );
