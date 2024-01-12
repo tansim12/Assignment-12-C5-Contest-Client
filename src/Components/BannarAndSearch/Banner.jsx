@@ -1,4 +1,3 @@
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -16,29 +15,22 @@ const Banner = () => {
   const restaurantData = [
     {
       id: 1,
-      title: "Delicious Bistro",
-      description:
-        "Enjoy a wide range of gourmet dishes prepared by our top chefs. From steaks to seafood, we have it all.",
+
       image:
-        "https://i.ibb.co/FhkBg0s/pngtree-color-creative-silhouette-knowledge-contest-poster-background-material-picture-image-1011376.png", // Replace with the actual image URL
+        "https://i.ibb.co/xf3dPzr/victorious-team-triumphs-sunset-with-trophy-numerous-silhouetted-hands-176841-15038.jpg",
     },
     {
       id: 2,
-      title: "Café Parisienne",
-      description:
-        "Experience the taste of Paris in every bite. Our croissants, pastries, and coffee will transport you to France.",
+
       image:
-        "https://i.ibb.co/2Y9fg66/pngtree-geometric-gradient-silhouette-english-speech-contest-poster-background-material-picture-imag.png", // Replace with the actual image URL
+        "https://i.ibb.co/gJFccYj/blue-purple-background-with-word-vs-171308-1079.jpg", // Replace with the actual image URL
     },
     {
       id: 3,
-      title: "Sushi Savor",
-      description:
-        "Savor the art of sushi making at its finest. Fresh fish, expertly prepared, for a delightful dining experience.",
+
       image:
-        "https://i.ibb.co/0K1KhzZ/pngtree-vs-pop-art-background-with-light-effect-picture-image-1208990.png", // Replace with the actual image URL
+        "https://i.ibb.co/mT5wDDp/illustrated-rendering-twin-avatar-23-2151061384.jpg", // Replace with the actual image URL
     },
-    
   ];
 
   return (
@@ -47,7 +39,7 @@ const Banner = () => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 7000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -56,22 +48,15 @@ const Banner = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
-        style={{zIndex:10}}
+        style={{ zIndex: 10 }}
       >
         {restaurantData?.map((item) => (
           <SwiperSlide key={item?.id}>
-            <div
-              className="hero min-h-screen w-full"
-              style={{
-                backgroundImage: `url(${item?.image})`,
-                minHeight:"50vh",
-                width:"100%",
-                backgroundSize:"cover",
-                
-              }}
-            >
-              
-            </div>
+            <img
+              src={item?.image}
+              alt=""
+              className="h-[60vh] w-full object-cover"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -80,6 +65,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
-
-

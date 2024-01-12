@@ -51,7 +51,7 @@ const Home = () => {
       </Grid>
 
       {/* popular contest  */}
-      <Container maxWidth={"lg"} sx={{ my: 16 }}>
+      <Container maxWidth={"lg"} sx={{ my: 8 }}>
         <Heading
           title={"Most Popular Contest"}
           subtitle={"Explore our top-rated contests."}
@@ -63,7 +63,7 @@ const Home = () => {
           {popularContestData?.length === 0 && <NoDataFound />}
 
           {popularContestData?.map((item) => (
-            <Grid key={item?._id} item sx={12} sm={12} md={6} lg={4}>
+            <Grid key={item?._id} item sx={12} xs={12} sm={12} md={6} lg={4}>
               <ContestCard item={item}></ContestCard>
             </Grid>
           ))}
