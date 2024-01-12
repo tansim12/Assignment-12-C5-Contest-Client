@@ -64,7 +64,7 @@ const Banner = () => {
               className="hero min-h-screen w-full"
               style={{
                 backgroundImage: `url(${item?.image})`,
-                minHeight:"70vh",
+                minHeight:"50vh",
                 width:"100%",
                 backgroundSize:"cover",
                 
