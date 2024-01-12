@@ -17,7 +17,7 @@ const Search = ({setSearchValue}) => {
   };
 
   return (
-    <Grid container justifyContent="center" textAlign={matches ? "center" : ""}>
+    <Grid container p={2} justifyContent="center" textAlign={matches ? "center" : ""}>
       <Grid item xs={12} sx={{ py: 4 }}>
         <Typography variant="h4" color={theme.palette.primary.main} fontWeight={800}  data-aos="fade-down"
                     data-aos-easing="linear"

@@ -1,0 +1,7 @@
+.creatorCardShadow{
+    /* border-radius: 40px; */
+border: 2px solid rgba(255, 255, 255, 0.50);
+background: linear-gradient(318deg, rgba(0, 0, 0, 0.40) 0%, rgba(255, 255, 255, 0.40) 105.18%), #EBECF0;
+background-blend-mode: soft-light, normal;
+box-shadow: 10px 10px 20px 0px #A6ABBD inset, -10px -10px 20px 0px #FAFBFF inset;
+}

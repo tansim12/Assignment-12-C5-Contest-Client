@@ -4,25 +4,15 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "./styles.css";
 import DisplayCreatorCard from "./DisplayCreatorCard";
-// import { useMediaQuery } from "@mui/material";
-// import { useEffect, useState } from "react";
+
 
 
 
 const DisplayCreator = () => {
-    // const isMobile = useMediaQuery("(max-width:900px)");
-    // const [x , setX]= useState(200)
-
-    // useEffect(() => {
-    //     if (isMobile) {
-    //       setX(12); // Update x value if screen width is under or equal to 900px
-    //     } else {
-    //       setX(200); // Default value for wider screens
-    //     }
-    //   }, [isMobile]);
+   
 
     const carousel = (slider) => {
-        let z = 120
+        let z = 150
         function rotate() {
           const deg = 360 * slider.track.details.progress;
           slider.container.style.transform = `translateZ(-${z}px) rotateY(${-deg}deg)`;
@@ -64,6 +54,7 @@ const DisplayCreator = () => {
   );
 
   return (
+    <div className="flex justify-center items-center">
     <div className="wrapper">
       <div className="scene">
       <div className="carousel keen-slider" ref={sliderRef}>
@@ -72,11 +63,11 @@ const DisplayCreator = () => {
 
             <DisplayCreatorCard item={data[0]} />
           </div>
-          <div className="carousel__cell number-slide1">
+          <div className="carousel__cell number-slide2">
 
             <DisplayCreatorCard item={data[1]} />
           </div>
-          <div className="carousel__cell number-slide1">
+          <div className="carousel__cell number-slide3">
 
             <DisplayCreatorCard item={data[2]} />
           </div>
@@ -84,7 +75,7 @@ const DisplayCreator = () => {
         </div>
       </div>
       {/* </div> */}
-    </div>
+    </div></div>
   );
 };
 

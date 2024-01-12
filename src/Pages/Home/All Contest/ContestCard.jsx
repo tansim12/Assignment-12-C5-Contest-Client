@@ -11,12 +11,8 @@ const ContestCard = ({ item }) => {
   return (
     <Card>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="180"
-          image={item?.image}
-          alt={item?.contest_name}
-        />
+        <img src={item?.image} alt={item?.contest_name} className="h-52 w-full object-cover hover:scale-110 transition-all" />
+
         <CardContent>
           <Typography
             gutterBottom
@@ -45,7 +41,7 @@ const ContestCard = ({ item }) => {
             Participate : {item?.total_join}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item?.description?.slice(0,45)}
+            {item?.description?.slice(0, 45)}
           </Typography>
         </CardContent>
       </CardActionArea>

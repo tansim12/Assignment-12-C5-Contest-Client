@@ -3,14 +3,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea } from "@mui/material";
+import "../../../shared/creatorCardShadow.css"
 
 const DisplayCreatorCard = ({ item }) => {
   return (
+    <div className="">
     <Card sx={{ maxWidth: 445 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="160"
           image={item?.creatorInfo?.image}
           alt="green iguana"
         />
@@ -34,7 +36,7 @@ const DisplayCreatorCard = ({ item }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </Card></div>
   );
 };
 
