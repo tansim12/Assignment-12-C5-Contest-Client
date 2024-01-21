@@ -11,6 +11,7 @@ import NoDataFound from "../../shared/NoDataFound";
 import { Helmet } from "react-helmet-async";
 import DisplayCreator from "./DisplayCreator/DisplayCreator";
 import Map from "../../Components/leaflet Map/Map";
+import Faqs from "../../Components/Faqs/Faqs";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -99,6 +100,12 @@ const Home = () => {
         </Grid>
         <WinnerDisplay></WinnerDisplay>
       </div>
+
+{/* faqs section  */}
+<div>
+  <Faqs />
+</div>
+
 
       {/* leaflet map  */}
       <div>

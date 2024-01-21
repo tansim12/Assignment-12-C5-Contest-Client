@@ -30,34 +30,29 @@ const HomePageNavLink = () => {
           <Tab value="one" label="Home" to="/ " component={Link} />
           <Tab
             value="two"
-            label=" All Contest"
-            to="/allContest "
+            label="All Contest"
+            to="/allContest"
             component={Link}
           />
           <Tab
             value="three"
             label="Leaderboard"
-            to="/Leaderboard "
+            to="/Leaderboard"
             component={Link}
           />
           <Tab
             value="four"
             label="Progress"
-            to="/progress "
+            to="/progress"
             component={Link}
           />
           <Tab
             value="five"
             label="Success"
-            to="/success "
+            to="/success"
             component={Link}
           />
-          {/* <Tab
-            value="five"
-            label="Find Us"
-            to="/findUs "
-            component={Link}
-          /> */}
+          
         </Tabs>
       </Box>
     </div>
