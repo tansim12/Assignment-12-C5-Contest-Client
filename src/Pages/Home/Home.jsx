@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet-async";
 import DisplayCreator from "./DisplayCreator/DisplayCreator";
 import Map from "../../Components/leaflet Map/Map";
 import Faqs from "../../Components/Faqs/Faqs";
+import BannerWithShar from "../../shared/BannerWithShar";
 
 const Home = () => {
   const [getSearchValue, setSearchValue] = useState("");
@@ -102,7 +103,10 @@ const Home = () => {
       </div>
 
 {/* faqs section  */}
-<div>
+<div className="my-16">
+  <Container>
+    < Heading title={"FAQs"} subtitle={""} additionalInfo={"Explore the criteria used to determine winners and familiarize yourself with contest rules."} /> 
+  </Container>
   <Faqs />
 </div>
 
